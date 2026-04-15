@@ -1,6 +1,6 @@
  # Suvani Waghmore | Technical Storyteller
  
-**Turning raw data into narratives that perform — and persuade.**
+**Turning raw data into narratives that perform and persuade.**
 
 <img src="https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/suvani-profile.jpeg" alt="Suvani Waghmore" width="180" style="border-radius: 50%;">
 
@@ -8,13 +8,13 @@
 
 What if your data didn’t just sit in dashboards… but actually **told a story** that moved people to act?
 
-That’s the intersection I live in — where machine learning meets brand narrative. I build intelligent systems that don’t just predict outcomes; they help brands **connect**, **convert**, and **scale**.
+That’s the intersection I live in where machine learning meets brand narrative. I build intelligent systems that don’t just predict outcomes; they help brands **connect**, **convert**, and **scale**.
 
 Currently pursuing **B.Tech in Computer Science** with a sharp focus on **Data Science & Machine Learning**, I blend technical depth with creative execution.
 
 ### What You’ll Find Here
 
-This repository powers my living portfolio — a modern, responsive showcase built to reflect the same attention to detail I bring to every project.
+This repository powers my living portfolio  a modern, responsive showcase built to reflect the same attention to detail I bring to every project.
 
 - **Live Experience** → [View the Portfolio](https://suvaniwaghmare085-droid.github.io/My-Portfolio-DEMO/) 
 - **Full CV** → [Download PDF](https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf)
