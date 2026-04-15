@@ -10,7 +10,7 @@ I blend **machine learning**, **data science**, and **creative storytelling** to
 
 ## ✨ Live Portfolio
 
-**👉 [View Live Portfolio](https://suvaniwaghmore085-droid.github.io/My-Portfolio-DEMO/)**
+**👉 [View Live Portfolio](https://suvaniwaghmare085-droid.github.io/My-Portfolio-DEMO/)
 
 *(Modern dark/light mode • Smooth animations • Fully responsive)*
 
