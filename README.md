@@ -1,4 +1,5 @@
  # Suvani Waghmore | Technical Storyteller
+ 
 **Turning raw data into narratives that perform — and persuade.**
 <img src="https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/suvani-profile.jpeg" alt="Suvani Waghmore" width="180" style="border-radius: 50%;">
 
