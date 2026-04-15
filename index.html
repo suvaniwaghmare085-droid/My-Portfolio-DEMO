@@ -13,26 +13,41 @@
 
     <style>
         :root {
-            --cyan: #14f0c8;
-            --cyan-dim: rgba(20,240,200,0.12);
-            --cyan-glow: rgba(20,240,200,0.25);
-        }
-        body.dark {
-            --bg: #050505;
-            --text: #f0f0f0;
+             --cyan: #14f0c8;
+
+              /* NEW */
+             --text-primary: #f0f0f0;
+             --text-secondary: rgba(240,240,240,0.6);
+       }
+       body.dark {
+             --bg: #050505;
+             --text: var(--text-primary);
             --card-bg: rgba(255,255,255,0.03);
             --card-border: rgba(255,255,255,0.07);
             --text-muted: rgba(240,240,240,0.5);
             --nav-bg: rgba(5,5,5,0.85);
-        }
-        body.light {
+
+            /* NEW */
+            --text-primary: #f0f0f0;
+            --text-secondary: rgba(240,240,240,0.6);
+     }
+
+    body.light {
             --bg: #f8f9fa;
-            --text: #1a1a1a;
+            --text: var(--text-primary);
             --card-bg: rgba(255,255,255,0.9);
             --card-border: rgba(0,0,0,0.08);
             --text-muted: rgba(26,26,26,0.6);
             --nav-bg: rgba(248,249,250,0.95);
+
+            /* NEW */
+            --text-primary: #1a1a1a;
+            --text-secondary: rgba(26,26,26,0.7);
+
+             /* NEW BACKGROUND */
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 50%, #ffffff 100%);
         }
+        
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'DM Sans', 'dm-sans', system-ui, sans-serif;
@@ -371,9 +386,56 @@
             padding: 112px 0;
             background: radial-gradient(ellipse 100% 60% at 50% 0%, rgba(20,240,200,0.04) 0%, transparent 70%);
         }
+        
+        /* DARK MODE SPARKLES */
+        .sparkles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, rgba(20,240,200,0.4), transparent),
+                radial-gradient(2px 2px at 70% 60%, rgba(20,240,200,0.3), transparent),
+                radial-gradient(1.5px 1.5px at 40% 80%, rgba(20,240,200,0.25), transparent),
+                radial-gradient(1px 1px at 80% 20%, rgba(20,240,200,0.3), transparent);
+             animation: sparkleMove 10s linear infinite;
+        }
+
+                @keyframes sparkleMove {
+                from { transform: translateY(0); }
+                to { transform: translateY(-50px); }
+        }
+
+            /* HIDE IN LIGHT MODE */
+        body.light .sparkles {
+            display: none;
+        }
+
+        /* LIGHT MODE PATTERN */
+        body.light::before {
+            content: '';
+            position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* TEXT IMPROVEMENT */
+.hero-sub,
+.hero-sub2 {
+    color: var(--text-secondary);
+}
+
+body.dark .text-cyan {
+    text-shadow: 0 0 20px rgba(20,240,200,0.6);
+}
     </style>
+    
 </head>
 <body class="dark">
+<div class="sparkles"></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
 <!-- NAV -->
