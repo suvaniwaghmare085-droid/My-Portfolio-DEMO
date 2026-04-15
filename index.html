@@ -4,28 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suvani Waghmore | Technical Storyteller</title>
-    
-    <!-- Tailwind CDN + Config (MUST be exactly like this) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            content: [],
-            theme: { extend: {} }
-        };
-    </script>
 
+    <!-- Font Awesome (allowed CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-    
-    
+    <!-- Google Fonts via jsDelivr (allowed CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.0.8/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5.0.12/index.css">
+
     <style>
         :root {
             --cyan: #14f0c8;
             --cyan-dim: rgba(20,240,200,0.12);
             --cyan-glow: rgba(20,240,200,0.25);
         }
-        /* DARK MODE (default) */
         body.dark {
             --bg: #050505;
             --text: #f0f0f0;
@@ -34,7 +25,6 @@
             --text-muted: rgba(240,240,240,0.5);
             --nav-bg: rgba(5,5,5,0.85);
         }
-        /* LIGHT MODE */
         body.light {
             --bg: #f8f9fa;
             --text: #1a1a1a;
@@ -43,21 +33,19 @@
             --text-muted: rgba(26,26,26,0.6);
             --nav-bg: rgba(248,249,250,0.95);
         }
-        *, *::before, *::after { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'DM Sans', 'dm-sans', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
             transition: background 0.4s cubic-bezier(0.4,0,0.2,1);
         }
-        .syne { font-family: 'Syne', sans-serif; }
-        /* CURSOR GLOW */
+        .syne { font-family: 'Syne', 'syne', system-ui, sans-serif; }
         .cursor-glow {
             pointer-events: none;
             position: fixed;
-            width: 400px;
-            height: 400px;
+            width: 400px; height: 400px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(20,240,200,0.06) 0%, transparent 70%);
             transform: translate(-50%, -50%);
@@ -66,409 +54,499 @@
         }
         /* NAV */
         nav {
+            position: sticky; top: 0; z-index: 50;
             border-bottom: 1px solid rgba(255,255,255,0.07);
             backdrop-filter: blur(20px);
             background: var(--nav-bg);
         }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto;
+            padding: 20px 32px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo { font-family: 'Syne', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .nav-links { display: flex; align-items: center; gap: 40px; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
         .nav-link {
-            position: relative;
-            font-size: 0.82rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: color 0.3s;
+            position: relative; font-size: 0.82rem; letter-spacing: 0.06em;
+            text-transform: uppercase; font-weight: 500;
+            color: var(--text-muted); transition: color 0.3s; text-decoration: none;
         }
         .nav-link:hover { color: var(--cyan); }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .text-cyan { color: var(--cyan); }
         /* HERO */
         .hero-gradient {
             background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(20,240,200,0.07) 0%, transparent 70%);
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 64px 0 80px; position: relative; overflow: hidden;
+        }
+        .hero-grid-bg {
+            position: absolute; inset: 0; opacity: 0.03;
+            background-image: linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+        .hero-layout {
+            display: grid; grid-template-columns: 5fr 7fr;
+            gap: 64px; align-items: center; position: relative; z-index: 10;
+        }
+        @media (max-width: 768px) {
+            .hero-layout { grid-template-columns: 1fr; }
+            .hero-profile { order: -1; display: flex; justify-content: center; }
         }
         .hero-title {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            line-height: 0.95;
-            letter-spacing: -0.04em;
+            font-family: 'Syne', system-ui, sans-serif; font-weight: 800;
+            line-height: 0.95; letter-spacing: -0.04em;
+            font-size: clamp(3.5rem, 9vw, 7rem); margin-bottom: 24px;
         }
-        .text-cyan { color: var(--cyan); }
-        .profile-wrap {
-            position: relative;
-        }
+        .profile-wrap { position: relative; width: 400px; height: 460px; }
+        @media (max-width: 768px) { .profile-wrap { width: 320px; height: 320px; } }
         .profile-wrap::before {
-            content: '';
-            position: absolute;
-            inset: -3px;
+            content: ''; position: absolute; inset: -3px;
             border-radius: 2.2rem;
             background: linear-gradient(135deg, var(--cyan), transparent 60%, var(--cyan));
-            z-index: 0;
-            animation: rotateGrad 4s linear infinite;
+            z-index: 0; animation: rotateGrad 4s linear infinite;
         }
         @keyframes rotateGrad {
             0% { filter: hue-rotate(0deg); }
             100% { filter: hue-rotate(30deg); }
         }
         .profile-img-inner {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            border-radius: 2rem;
-            object-fit: cover;
+            position: relative; z-index: 1; width: 100%; height: 100%;
+            border-radius: 2rem; object-fit: cover; display: block;
         }
-        /* CARDS */
-        .glass-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        .profile-badge {
+            position: absolute; top: -20px; right: -20px; z-index: 2;
+            background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem; padding: 8px 16px;
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.75rem; font-weight: 600;
+            font-family: 'Syne', system-ui, sans-serif;
         }
-        .glass-card:hover {
-            background: rgba(20,240,200,0.05);
-            border-color: rgba(20,240,200,0.25);
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px -15px rgba(20,240,200,0.12);
+        .badge-dot { font-size: 1rem; }
+        .available-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.75rem; color: rgba(240,240,240,0.4);
+            margin-bottom: 24px;
+            font-family: 'Syne', system-ui, sans-serif;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 9999px; padding: 8px 16px;
         }
+        .pulse-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--cyan); display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .hero-sub { font-size: 1.125rem; color: rgba(240,240,240,0.6); max-width: 32rem; margin-bottom: 12px; line-height: 1.7; }
+        .hero-sub2 { color: rgba(240,240,240,0.4); max-width: 32rem; margin-bottom: 40px; line-height: 1.7; }
+        .text-cyan70 { color: rgba(20,240,200,0.7); }
+        .hero-btns { display: flex; flex-wrap: wrap; gap: 16px; }
+        .hero-stats {
+            display: flex; gap: 32px; margin-top: 48px;
+            padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.07);
+        }
+        .stat-divider { width: 1px; background: rgba(255,255,255,0.1); }
+        .stat-num { font-family: 'Syne', system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--cyan); }
+        .stat-label { font-size: 0.75rem; color: rgba(240,240,240,0.4); margin-top: 4px; }
+        .scroll-hint {
+            position: absolute; bottom: 40px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.2);
+        }
+        .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent); }
+        .scroll-text { font-family: 'Syne', system-ui, sans-serif; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; }
         /* BTN */
         .btn-primary {
-            background: var(--cyan);
-            color: #000;
-            font-weight: 700;
-            font-family: 'Syne', sans-serif;
-            letter-spacing: 0.04em;
-            border-radius: 100px;
-            transition: all 0.3s;
+            background: var(--cyan); color: #000; font-weight: 700;
+            font-family: 'Syne', system-ui, sans-serif; letter-spacing: 0.04em;
+            border-radius: 9999px; transition: all 0.3s;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+            border: none; cursor: pointer;
         }
-        .btn-primary:hover {
-            box-shadow: 0 0 30px rgba(20,240,200,0.5);
-            transform: translateY(-2px);
-        }
+        .btn-primary:hover { box-shadow: 0 0 30px rgba(20,240,200,0.5); transform: translateY(-2px); }
         .btn-outline {
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 100px;
-            transition: all 0.3s;
-            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 9999px;
+            transition: all 0.3s; font-weight: 500; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(240,240,240,0.7); background: transparent; cursor: pointer;
         }
-        .btn-outline:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
+        .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+        .btn-sm { padding: 10px 20px; font-size: 0.875rem; }
+        .btn-md { padding: 16px 32px; font-size: 0.875rem; }
+        .btn-lg { padding: 20px 48px; font-size: 1rem; }
+        /* CARDS */
+        .glass-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 1.5rem; transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
         }
-        /* SECTION LABEL */
+        .glass-card:hover {
+            background: rgba(20,240,200,0.05); border-color: rgba(20,240,200,0.25);
+            transform: translateY(-5px); box-shadow: 0 30px 60px -15px rgba(20,240,200,0.12);
+        }
+        /* SECTIONS */
         .section-label {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--cyan);
-            font-weight: 600;
+            font-family: 'Syne', system-ui, sans-serif; font-size: 0.72rem;
+            letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); font-weight: 600;
         }
-        /* SKILLS TAB SYSTEM */
-        .skills-tabs-wrapper {
-            position: relative;
+        .section-center { text-align: center; }
+        .section-h2 {
+            font-family: 'Syne', system-ui, sans-serif; font-size: clamp(2.5rem, 5vw, 3rem);
+            font-weight: 800; letter-spacing: -0.04em;
         }
+        .divider { border-top: 1px solid rgba(255,255,255,0.06); }
+        .py-28 { padding-top: 112px; padding-bottom: 112px; }
+        .mb-4 { margin-bottom: 16px; }
+        .mb-3 { margin-bottom: 12px; }
+        .mb-14 { margin-bottom: 56px; }
+        .mb-16 { margin-bottom: 64px; }
+        .mt-3 { margin-top: 12px; }
+        .mt-5 { margin-top: 20px; }
+        .muted50 { color: rgba(240,240,240,0.5); }
+        .muted40 { color: rgba(240,240,240,0.4); }
+        .muted30 { color: rgba(240,240,240,0.3); }
+        /* ABOUT */
+        .about-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+        }
+        @media (max-width: 768px) { .about-grid { grid-template-columns: repeat(2, 1fr); } }
+        .about-card { padding: 32px; text-align: center; }
+        /* PROJECTS */
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        @media (max-width: 1024px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
+        .project-num {
+            font-family: 'Syne', system-ui, sans-serif; font-size: 3.5rem; font-weight: 800;
+            color: rgba(20,240,200,0.1); line-height: 1;
+            position: absolute; top: 1rem; right: 1.5rem;
+        }
+        .project-card { padding: 32px; position: relative; overflow: hidden; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+        .tech-tag {
+            font-size: 0.72rem; padding: 4px 12px; border-radius: 9999px;
+            background: rgba(20,240,200,0.08); color: var(--cyan);
+            border: 1px solid rgba(20,240,200,0.2);
+            font-family: 'Syne', system-ui, sans-serif; font-weight: 600;
+        }
+        /* CERTS */
+        .certs-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        @media (max-width: 1024px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .certs-grid { grid-template-columns: 1fr; } }
+        .cert-card { padding: 28px; }
+        /* SKILLS TAB */
         .tab-rail {
-            display: flex;
-            gap: 0;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 1rem;
-            padding: 6px;
-            flex-wrap: wrap;
-            gap: 4px;
+            display: flex; flex-wrap: wrap; gap: 4px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1rem; padding: 6px; position: relative; margin-bottom: 40px;
         }
-        body.light .tab-rail {
-            background: rgba(0,0,0,0.05);
-            border-color: rgba(0,0,0,0.1);
-        }
+        body.light .tab-rail { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); }
         .tab-btn {
-            position: relative;
-            padding: 10px 20px;
-            border-radius: 0.65rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            font-family: 'Syne', sans-serif;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-            z-index: 1;
+            position: relative; padding: 10px 20px; border-radius: 0.65rem;
+            font-size: 0.8rem; font-weight: 600;
+            font-family: 'Syne', system-ui, sans-serif; letter-spacing: 0.05em;
+            cursor: pointer; border: none; background: transparent;
+            color: var(--text-muted); transition: color 0.3s;
+            display: flex; align-items: center; gap: 6px; white-space: nowrap; z-index: 1;
         }
-        .tab-btn.active {
-            color: #000;
-        }
+        .tab-btn.active { color: #000; }
         .tab-indicator {
-            position: absolute;
-            border-radius: 0.65rem;
-            background: var(--cyan);
+            position: absolute; border-radius: 0.65rem; background: var(--cyan);
             transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-            z-index: 0;
-            box-shadow: 0 0 20px rgba(20,240,200,0.4);
+            z-index: 0; box-shadow: 0 0 20px rgba(20,240,200,0.4);
         }
-        .tab-panel {
-            display: none;
-            animation: fadeSlideUp 0.4s cubic-bezier(0.4,0,0.2,1);
-        }
-        .tab-panel.active {
-            display: block;
-        }
+        .tab-panel { display: none; animation: fadeSlideUp 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .tab-panel.active { display: block; }
         @keyframes fadeSlideUp {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* SKILL PILL */
+        /* SKILL COMPONENTS */
         .skill-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 100px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            cursor: default;
-            white-space: nowrap;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; border-radius: 9999px;
+            font-size: 0.82rem; font-weight: 500;
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s; cursor: default; white-space: nowrap;
         }
-        body.light .skill-pill {
-            background: rgba(0,0,0,0.04);
-            border-color: rgba(0,0,0,0.1);
+        body.light .skill-pill { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+        .skill-pills { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 1rem; padding: 20px; transition: all 0.3s;
         }
-        /* PROJECT & CERTIFICATE CARD */
-        .project-num {
-            font-family: 'Syne', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: rgba(20,240,200,0.1);
-            line-height: 1;
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
+        body.light .skill-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.07); }
+        .skill-card:hover { border-color: rgba(20,240,200,0.2); }
+        .prof-bar-track {
+            width: 100%; height: 4px; background: rgba(255,255,255,0.08);
+            border-radius: 9999px; overflow: hidden;
         }
-        /* LIGHT MODE ADJUSTMENTS */
-        body.light .nav-link { color: #555; }
+        .prof-bar-fill {
+            height: 100%; background: linear-gradient(90deg, var(--cyan), rgba(20,240,200,0.6));
+            border-radius: 9999px; transform: scaleX(0); transform-origin: left;
+            transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+        }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); display: inline-block; }
+        /* SKILL LAYOUT HELPERS */
+        .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+        @media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width: 768px) { .grid-3 { grid-template-columns: 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .grid-4 { grid-template-columns: 1fr; } }
+        .skill-icon-wrap {
+            width: 40px; height: 40px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
+        }
+        .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .skill-header-info .label { font-family: 'Syne', system-ui, sans-serif; font-weight: 700; font-size: 0.875rem; }
+        .skill-header-info .sub { font-size: 0.75rem; color: rgba(240,240,240,0.3); }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .skill-level { color: var(--cyan); font-size: 0.75rem; font-family: 'Syne', system-ui, sans-serif; font-weight: 700; }
+        .skill-pct { text-align: right; font-size: 0.75rem; color: var(--cyan); margin-top: 6px; font-family: 'Syne', system-ui, sans-serif; font-weight: 700; }
+        .subhead { font-size: 0.75rem; color: rgba(240,240,240,0.3); font-family: 'Syne', system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
+        /* GOALS */
+        .goals-chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .goal-chip {
+            padding: 10px 20px; border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.1); font-size: 0.875rem;
+            background: rgba(255,255,255,0.03); transition: all 0.3s;
+        }
+        .goal-chip:hover { border-color: var(--cyan); color: var(--cyan); }
+        /* CONTACT */
+        .contact-section { max-width: 1280px; margin: 0 auto; padding: 0 32px 128px; }
+        .contact-wrap { max-width: 42rem; margin: 0 auto; position: relative; }
+        .contact-glow {
+            position: absolute; inset: 0; border-radius: 1.5rem;
+            background: radial-gradient(ellipse at 50% 0%, rgba(20,240,200,0.12) 0%, transparent 70%);
+        }
+        .contact-card { position: relative; padding: 64px; text-align: center; }
+        .contact-dot-bg {
+            position: absolute; inset: 0; opacity: 0.05; border-radius: 1.5rem;
+            background-image: radial-gradient(circle, #14f0c8 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .contact-icon { font-size: 3rem; color: var(--cyan); margin-bottom: 32px; display: block; position: relative; z-index: 10; }
+        .contact-h2 { font-family: 'Syne', system-ui, sans-serif; font-size: clamp(2rem,5vw,3rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 20px; position: relative; z-index: 10; }
+        .contact-p { color: rgba(240,240,240,0.5); max-width: 24rem; margin: 0 auto 40px; line-height: 1.7; position: relative; z-index: 10; }
+        .contact-socials { display: flex; justify-content: center; gap: 32px; margin-top: 48px; position: relative; z-index: 10; }
+        .contact-socials a { font-size: 1.5rem; color: rgba(240,240,240,0.3); transition: color 0.3s; text-decoration: none; }
+        .contact-socials a:hover { color: var(--cyan); }
+        /* FOOTER */
+        footer { padding: 40px; text-align: center; }
+        .footer-inner { max-width: 1280px; margin: 0 auto; }
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        /* LIGHT MODE OVERRIDES */
+        body.light .muted50 { color: #555; }
+        body.light .muted40 { color: #666; }
+        body.light .muted30 { color: #777; }
         body.light .glass-card:hover { box-shadow: 0 30px 60px -15px rgba(20,240,200,0.25); }
-        body.light .text-white\/50 { color: #555; }
-        body.light .text-white\/40 { color: #666; }
-        body.light .text-white\/30 { color: #777; }
+        body.light .contact-socials a { color: #888; }
+        body.light nav { border-color: rgba(0,0,0,0.08); }
+        body.light .divider { border-color: rgba(0,0,0,0.06); }
+        body.light .available-badge { color: #777; border-color: rgba(0,0,0,0.12); }
+        body.light .hero-sub { color: rgba(26,26,26,0.65); }
+        body.light .hero-sub2 { color: rgba(26,26,26,0.45); }
+        body.light .stat-label { color: rgba(26,26,26,0.45); }
+        body.light .skill-header-info .sub { color: rgba(26,26,26,0.4); }
+        body.light .subhead { color: rgba(26,26,26,0.35); }
+        body.light .prof-bar-track { background: rgba(0,0,0,0.1); }
+        body.light .skill-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.07); }
+        body.light .tab-btn { color: rgba(26,26,26,0.5); }
+        body.light .goal-chip { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); }
+        body.light .contact-p { color: rgba(26,26,26,0.55); }
+        body.light .profile-badge { background: #f0f0f0; border-color: rgba(0,0,0,0.1); color: #333; }
+        body.light .scroll-hint { color: rgba(0,0,0,0.2); }
+        /* SKILLS section bg */
+        .skills-section {
+            padding: 112px 0;
+            background: radial-gradient(ellipse 100% 60% at 50% 0%, rgba(20,240,200,0.04) 0%, transparent 70%);
+        }
     </style>
 </head>
-<body class="dark noise">
-<!-- CURSOR GLOW -->
+<body class="dark">
 <div class="cursor-glow" id="cursorGlow"></div>
 
 <!-- NAV -->
-<nav class="sticky top-0 z-50">
-    <div class="max-w-screen-xl mx-auto px-8 py-5 flex items-center justify-between">
-        <div class="syne font-extrabold text-2xl tracking-tighter">SWL<span class="text-cyan">.</span></div>
-        <div class="hidden md:flex items-center gap-10">
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo syne">SWL<span class="text-cyan">.</span></div>
+        <div class="nav-links">
             <a href="#about" class="nav-link">About</a>
             <a href="#projects" class="nav-link">Projects</a>
             <a href="#certificates" class="nav-link">Certificates</a>
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#contact" class="nav-link">Contact</a>
         </div>
-        <div class="flex items-center gap-3">
-            <!-- Theme Toggle -->
-            <button id="themeToggle" class="w-9 h-9 flex items-center justify-center text-xl text-white/70 hover:text-cyan transition-colors">
+        <div class="nav-right">
+            <button id="themeToggle" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:rgba(240,240,240,0.7);background:none;border:none;cursor:pointer;transition:color 0.3s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='rgba(240,240,240,0.7)'">
                 <i class="fa-solid fa-sun"></i>
             </button>
-           <a href="https://raw.githubusercontent.com/suvaniwaghmore085-droid/My-Portfolio-DEMO/main/MY_CV1.pdf" target="_blank"
-               class="btn-outline flex items-center gap-2 px-5 py-2.5 text-sm text-white/70">
-                <i class="fa-solid fa-download text-xs"></i> CV
+            <a href="https://raw.githubusercontent.com/suvaniwaghmore085-droid/My-Portfolio-DEMO/main/MY_CV1.pdf" target="_blank" class="btn-outline btn-sm">
+                <i class="fa-solid fa-download" style="font-size:0.75rem;"></i> CV
             </a>
-            <a href="#contact" class="btn-primary px-6 py-2.5 text-sm">Hire Me</a>
+            <a href="#contact" class="btn-primary btn-sm">Hire Me</a>
         </div>
     </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero-gradient min-h-screen flex items-center pt-16 pb-20 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 80px 80px;"></div>
-    <div class="max-w-screen-xl mx-auto px-8 grid md:grid-cols-12 gap-16 items-center relative z-10">
-        <!-- Profile -->
-        <div class="md:col-span-5 flex justify-center md:justify-end">
-            <div class="profile-wrap w-80 h-80 md:w-[400px] md:h-[460px] rounded-[2.2rem]">
-                <img src="https://raw.githubusercontent.com/suvaniwaghmore085-droid/My-Portfolio-DEMO/main/suvani-profile.jpeg"
-                     alt="Suvani Waghmore" 
-                     class="profile-img-inner w-full h-full">
-                <div class="absolute -top-5 -right-5 bg-[#0a0a0a] border border-white/10 rounded-2xl px-4 py-2 flex items-center gap-2 text-xs font-semibold syne" style="z-index:2;">
-                    <span class="text-cyan text-base">✦</span> Welcome to My Universe
+<section class="hero-gradient">
+    <div class="hero-grid-bg"></div>
+    <div class="container">
+        <div class="hero-layout">
+            <!-- Profile -->
+            <div class="hero-profile" style="display:flex;justify-content:flex-end;">
+                <div class="profile-wrap">
+                    <img src="https://raw.githubusercontent.com/suvaniwaghmore085-droid/My-Portfolio-DEMO/main/suvani-profile.jpeg"
+                         alt="Suvani Waghmore" class="profile-img-inner">
+                    <div class="profile-badge syne">
+                        <span class="badge-dot text-cyan">✦</span> Welcome to My Universe
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Text -->
-        <div class="md:col-span-7 text-center md:text-left">
-            <div class="inline-flex items-center gap-2 text-xs text-white/40 mb-6 syne tracking-widest uppercase border border-white/10 rounded-full px-4 py-2">
-                <span class="w-2 h-2 rounded-full bg-cyan inline-block animate-pulse"></span>
-                Available for opportunities
-            </div>
-            <h1 class="hero-title text-[clamp(3.5rem,9vw,7rem)] mb-6">
-                Hi 👋, I'm<br>
-                <span class="text-cyan" style="text-shadow: 0 0 60px rgba(20,240,200,0.4);">Suvani</span>
-            </h1>
-            <p class="text-lg md:text-xl text-white/60 max-w-lg mx-auto md:mx-0 mb-3 leading-relaxed">
-                I turn raw data into brand narratives.
-            </p>
-            <p class="text-white/40 max-w-lg mx-auto md:mx-0 mb-10 leading-relaxed">
-                Blending machine learning, data science, and creative storytelling to build solutions that both <span class="text-cyan/70">perform</span> and <span class="text-cyan/70">persuade</span>.
-            </p>
-            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                <a href="#contact" class="btn-primary px-8 py-4 text-sm flex items-center gap-2">
-                    Let's Work Together <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
-                <a href="#projects" class="btn-outline px-8 py-4 text-sm text-white/70">
-                    Explore My Work
-                </a>
-                <a href="https://raw.githubusercontent.com/suvaniwaghmore085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf" target="_blank"
-                   class="btn-outline px-8 py-4 text-sm text-white/70 flex items-center gap-2">
-                    <i class="fa-solid fa-download text-xs"></i> Download CV
-                </a>
-            </div>
-            <!-- Quick stats (ML Accuracy removed) -->
-            <div class="flex gap-8 mt-12 justify-center md:justify-start border-t border-white/07 pt-10">
-                <div>
-                    <div class="syne text-2xl font-bold text-cyan">45k+</div>
-                    <div class="text-xs text-white/40 mt-1">Content Reads</div>
+            <!-- Text -->
+            <div style="text-align:left;">
+                <div class="available-badge">
+                    <span class="pulse-dot"></span>
+                    Available for opportunities
                 </div>
-                <div class="w-px bg-white/10"></div>
-                <div>
-                    <div class="syne text-2xl font-bold text-cyan">3K</div>
-                    <div class="text-xs text-white/40 mt-1">Brand Followers</div>
+                <h1 class="hero-title">
+                    Hi 👋, I'm<br>
+                    <span class="text-cyan" style="text-shadow: 0 0 60px rgba(20,240,200,0.4);">Suvani</span>
+                </h1>
+                <p class="hero-sub">I turn raw data into brand narratives.</p>
+                <p class="hero-sub2">
+                    Blending machine learning, data science, and creative storytelling to build solutions that both <span class="text-cyan70">perform</span> and <span class="text-cyan70">persuade</span>.
+                </p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn-primary btn-md">
+                        Let's Work Together <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
+                    </a>
+                    <a href="#projects" class="btn-outline btn-md">Explore My Work</a>
+                    <a href="https://raw.githubusercontent.com/suvaniwaghmore085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf" target="_blank"
+                       class="btn-outline btn-md">
+                        <i class="fa-solid fa-download" style="font-size:0.75rem;"></i> Download CV
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="stat-num syne">45k+</div>
+                        <div class="stat-label">Content Reads</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div>
+                        <div class="stat-num syne">3K</div>
+                        <div class="stat-label">Brand Followers</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Scroll -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/20">
-        <div class="w-px h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-        <span class="syne text-[0.6rem] tracking-[0.3em] uppercase">Scroll</span>
+    <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span class="scroll-text syne">Scroll</span>
     </div>
 </section>
 
-<!-- ABOUT (Fun Fact removed) -->
-<section id="about" class="max-w-screen-xl mx-auto px-8 py-28 border-t divider reveal">
-    <div class="text-center mb-16">
+<!-- ABOUT -->
+<section id="about" class="divider py-28 reveal" style="max-width:1280px;margin:0 auto;padding-left:32px;padding-right:32px;">
+    <div class="section-center mb-16">
         <div class="section-label mb-4">△ About Me</div>
-        <h2 class="syne text-5xl font-extrabold tracking-tight">Where Data Meets Narrative</h2>
-        <p class="mt-5 text-white/50 max-w-xl mx-auto leading-relaxed">
+        <h2 class="section-h2">Where Data Meets Narrative</h2>
+        <p class="mt-5 muted50" style="max-width:36rem;margin-left:auto;margin-right:auto;line-height:1.7;">
             Passionate about solving real-world problems using tech — from building ML models to crafting brand stories that drive engagement.
         </p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="glass-card p-8 text-center reveal">
-            <div class="text-4xl mb-5">🎓</div>
-            <div class="syne font-bold text-base mb-1">B.Tech CSE</div>
-            <div class="text-white/40 text-xs">Data Science & ML</div>
+    <div class="about-grid">
+        <div class="glass-card about-card reveal">
+            <div style="font-size:2.5rem;margin-bottom:20px;">🎓</div>
+            <div class="syne" style="font-weight:700;font-size:1rem;margin-bottom:4px;">B.Tech CSE</div>
+            <div class="muted40" style="font-size:0.75rem;">Data Science & ML</div>
         </div>
-        <div class="glass-card p-8 text-center reveal" style="transition-delay:0.08s">
-            <div class="text-4xl mb-5">🛠️</div>
-            <div class="syne font-bold text-base mb-1">Problem Solver</div>
-            <div class="text-white/40 text-xs">Real-world tech solutions</div>
+        <div class="glass-card about-card reveal" style="transition-delay:0.08s">
+            <div style="font-size:2.5rem;margin-bottom:20px;">🛠️</div>
+            <div class="syne" style="font-weight:700;font-size:1rem;margin-bottom:4px;">Problem Solver</div>
+            <div class="muted40" style="font-size:0.75rem;">Real-world tech solutions</div>
         </div>
-        <div class="glass-card p-8 text-center reveal" style="transition-delay:0.16s">
-            <div class="text-4xl mb-5">✍️</div>
-            <div class="syne font-bold text-base mb-1">Story Writer</div>
-            <div class="text-white/40 text-xs">Persuasive creative</div>
+        <div class="glass-card about-card reveal" style="transition-delay:0.16s">
+            <div style="font-size:2.5rem;margin-bottom:20px;">✍️</div>
+            <div class="syne" style="font-weight:700;font-size:1rem;margin-bottom:4px;">Story Writer</div>
+            <div class="muted40" style="font-size:0.75rem;">Persuasive creative</div>
         </div>
-        <div class="glass-card p-8 text-center reveal" style="transition-delay:0.24s">
-            <div class="text-4xl mb-5">🚀</div>
-            <div class="syne font-bold text-base mb-1">Aspiring DS</div>
-            <div class="text-white/40 text-xs">Data Scientist path</div>
+        <div class="glass-card about-card reveal" style="transition-delay:0.24s">
+            <div style="font-size:2.5rem;margin-bottom:20px;">🚀</div>
+            <div class="syne" style="font-weight:700;font-size:1rem;margin-bottom:4px;">Aspiring DS</div>
+            <div class="muted40" style="font-size:0.75rem;">Data Scientist path</div>
         </div>
     </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="border-t divider py-28 reveal">
-    <div class="max-w-screen-xl mx-auto px-8">
-        <div class="text-center mb-14">
+<section id="projects" class="divider py-28 reveal">
+    <div class="container">
+        <div class="section-center mb-14">
             <div class="section-label mb-3">The Lab</div>
-            <h2 class="syne text-5xl font-extrabold tracking-tight">Featured Projects</h2>
-            <p class="text-white/40 mt-3">From interactive games to data analysis dashboards — built with passion.</p>
+            <h2 class="section-h2">Featured Projects</h2>
+            <p class="muted40 mt-3">From interactive games to data analysis dashboards — built with passion.</p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass-card p-8 relative overflow-hidden">
+        <div class="projects-grid">
+            <div class="glass-card project-card">
                 <div class="project-num">01</div>
-                <i class="fa-solid fa-laptop-code text-3xl text-cyan mb-6 block"></i>
-                <h4 class="syne text-xl font-bold mb-3">My-Portfolio-DEMO</h4>
-                <p class="text-white/50 text-sm leading-relaxed mb-8">This very portfolio website — a modern, animated showcase of my skills and journey.</p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">Tailwind</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-                <a href="https://github.com/suvaniwaghmore085-droid/My-Portfolio-DEMO" target="_blank" 
-                   class="btn-outline text-xs px-5 py-2.5 inline-flex items-center gap-2 w-full justify-center">
+                <i class="fa-solid fa-laptop-code text-cyan" style="font-size:1.875rem;margin-bottom:24px;display:block;"></i>
+                <h4 class="syne" style="font-size:1.25rem;font-weight:700;margin-bottom:12px;">My-Portfolio-DEMO</h4>
+                <p class="muted50" style="font-size:0.875rem;line-height:1.7;margin-bottom:32px;">This very portfolio website — a modern, animated showcase of my skills and journey.</p>
+                <div class="tech-tags"><span class="tech-tag">HTML</span><span class="tech-tag">Tailwind</span><span class="tech-tag">JavaScript</span></div>
+                <a href="https://github.com/suvaniwaghmore085-droid/My-Portfolio-DEMO" target="_blank" class="btn-outline btn-sm" style="width:100%;justify-content:center;">
                     <i class="fa-brands fa-github"></i> View on GitHub
                 </a>
             </div>
-
-            <div class="glass-card p-8 relative overflow-hidden">
+            <div class="glass-card project-card">
                 <div class="project-num">02</div>
-                <i class="fa-solid fa-chart-bar text-3xl text-cyan mb-6 block"></i>
-                <h4 class="syne text-xl font-bold mb-3">Manexa-sample-dashboard</h4>
-                <p class="text-white/50 text-sm leading-relaxed mb-8">Interactive sales & analytics dashboard built with Python, Pandas & Plotly.</p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Plotly</span>
-                </div>
-                <a href="https://github.com/suvaniwaghmore085-droid/Manexa-sample-dashboard" target="_blank" 
-                   class="btn-outline text-xs px-5 py-2.5 inline-flex items-center gap-2 w-full justify-center">
+                <i class="fa-solid fa-chart-bar text-cyan" style="font-size:1.875rem;margin-bottom:24px;display:block;"></i>
+                <h4 class="syne" style="font-size:1.25rem;font-weight:700;margin-bottom:12px;">Manexa-sample-dashboard</h4>
+                <p class="muted50" style="font-size:0.875rem;line-height:1.7;margin-bottom:32px;">Interactive sales & analytics dashboard built with Python, Pandas & Plotly.</p>
+                <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Plotly</span></div>
+                <a href="https://github.com/suvaniwaghmore085-droid/Manexa-sample-dashboard" target="_blank" class="btn-outline btn-sm" style="width:100%;justify-content:center;">
                     <i class="fa-brands fa-github"></i> View on GitHub
                 </a>
             </div>
-
-            <div class="glass-card p-8 relative overflow-hidden">
+            <div class="glass-card project-card">
                 <div class="project-num">03</div>
-                <i class="fa-solid fa-gamepad text-3xl text-cyan mb-6 block"></i>
-                <h4 class="syne text-xl font-bold mb-3">Quiz-Game</h4>
-                <p class="text-white/50 text-sm leading-relaxed mb-8">Story-driven interactive quiz blending logic & creativity. Built with HTML, CSS & JavaScript.</p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-                <a href="https://github.com/suvaniwaghmore085-droid/Quiz-Game" target="_blank" 
-                   class="btn-outline text-xs px-5 py-2.5 inline-flex items-center gap-2 w-full justify-center">
+                <i class="fa-solid fa-gamepad text-cyan" style="font-size:1.875rem;margin-bottom:24px;display:block;"></i>
+                <h4 class="syne" style="font-size:1.25rem;font-weight:700;margin-bottom:12px;">Quiz-Game</h4>
+                <p class="muted50" style="font-size:0.875rem;line-height:1.7;margin-bottom:32px;">Story-driven interactive quiz blending logic & creativity. Built with HTML, CSS & JavaScript.</p>
+                <div class="tech-tags"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span></div>
+                <a href="https://github.com/suvaniwaghmore085-droid/Quiz-Game" target="_blank" class="btn-outline btn-sm" style="width:100%;justify-content:center;">
                     <i class="fa-brands fa-github"></i> View on GitHub
                 </a>
             </div>
-
-            <div class="glass-card p-8 relative overflow-hidden">
+            <div class="glass-card project-card">
                 <div class="project-num">04</div>
-                <i class="fa-solid fa-film text-3xl text-cyan mb-6 block"></i>
-                <h4 class="syne text-xl font-bold mb-3">Movie-Dataset-Project</h4>
-                <p class="text-white/50 text-sm leading-relaxed mb-8">Python data analysis exploring IMDb movie dataset using Pandas & Jupyter Notebook.</p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Jupyter</span>
-                </div>
-                <a href="https://github.com/suvaniwaghmore085-droid/Movie-Dataset-Project" target="_blank" 
-                   class="btn-outline text-xs px-5 py-2.5 inline-flex items-center gap-2 w-full justify-center">
+                <i class="fa-solid fa-film text-cyan" style="font-size:1.875rem;margin-bottom:24px;display:block;"></i>
+                <h4 class="syne" style="font-size:1.25rem;font-weight:700;margin-bottom:12px;">Movie-Dataset-Project</h4>
+                <p class="muted50" style="font-size:0.875rem;line-height:1.7;margin-bottom:32px;">Python data analysis exploring IMDb movie dataset using Pandas & Jupyter Notebook.</p>
+                <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Jupyter</span></div>
+                <a href="https://github.com/suvaniwaghmore085-droid/Movie-Dataset-Project" target="_blank" class="btn-outline btn-sm" style="width:100%;justify-content:center;">
                     <i class="fa-brands fa-github"></i> View on GitHub
                 </a>
             </div>
-
-            <div class="glass-card p-8 relative overflow-hidden">
+            <div class="glass-card project-card">
                 <div class="project-num">05</div>
-                <i class="fa-solid fa-bug text-3xl text-cyan mb-6 block"></i>
-                <h4 class="syne text-xl font-bold mb-3">Bug-Hunt-game</h4>
-                <p class="text-white/50 text-sm leading-relaxed mb-8">Fun HTML-based bug hunting game to practice logic and interactivity.</p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-                <a href="https://github.com/suvaniwaghmore085-droid/Bug-Hunt-game" target="_blank" 
-                   class="btn-outline text-xs px-5 py-2.5 inline-flex items-center gap-2 w-full justify-center">
+                <i class="fa-solid fa-bug text-cyan" style="font-size:1.875rem;margin-bottom:24px;display:block;"></i>
+                <h4 class="syne" style="font-size:1.25rem;font-weight:700;margin-bottom:12px;">Bug-Hunt-game</h4>
+                <p class="muted50" style="font-size:0.875rem;line-height:1.7;margin-bottom:32px;">Fun HTML-based bug hunting game to practice logic and interactivity.</p>
+                <div class="tech-tags"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span></div>
+                <a href="https://github.com/suvaniwaghmore085-droid/Bug-Hunt-game" target="_blank" class="btn-outline btn-sm" style="width:100%;justify-content:center;">
                     <i class="fa-brands fa-github"></i> View on GitHub
                 </a>
             </div>
@@ -477,80 +555,80 @@
 </section>
 
 <!-- CERTIFICATES -->
-<section id="certificates" class="max-w-screen-xl mx-auto px-8 py-28 border-t divider reveal">
-    <div class="text-center mb-14">
+<section id="certificates" class="divider py-28 reveal" style="max-width:1280px;margin:0 auto;padding-left:32px;padding-right:32px;">
+    <div class="section-center mb-14">
         <div class="section-label mb-3">Achievements</div>
-        <h2 class="syne text-5xl font-extrabold tracking-tight">Certificates & Milestones</h2>
-        <p class="text-white/40 mt-3">Continuous learning across data science, programming, writing & professional skills.</p>
+        <h2 class="section-h2">Certificates & Milestones</h2>
+        <p class="muted40 mt-3">Continuous learning across data science, programming, writing & professional skills.</p>
     </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">🔒</span>
-            <h4 class="syne font-bold text-lg mb-1">Introduction to Cyber Security</h4>
-            <div class="text-xs text-white/40 mb-4">Infosys Springboard</div>
-            <p class="text-white/50 text-sm">Core concepts of cyber threats, vulnerabilities, risk management & ethical security practices.</p>
+    <div class="certs-grid">
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">🔒</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Introduction to Cyber Security</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Infosys Springboard</div>
+            <p class="muted50" style="font-size:0.875rem;">Core concepts of cyber threats, vulnerabilities, risk management & ethical security practices.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">🐍</span>
-            <h4 class="syne font-bold text-lg mb-1">CS105: Introduction to Python</h4>
-            <div class="text-xs text-white/40 mb-4">Saylor Academy • 98.42% • 3.6 CEUs</div>
-            <p class="text-white/50 text-sm">Variables, loops, functions, data structures & problem-solving mindset.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">🐍</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">CS105: Introduction to Python</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Saylor Academy • 98.42% • 3.6 CEUs</div>
+            <p class="muted50" style="font-size:0.875rem;">Variables, loops, functions, data structures & problem-solving mindset.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">🐍</span>
-            <h4 class="syne font-bold text-lg mb-1">Basics of Python</h4>
-            <div class="text-xs text-white/40 mb-4">Infosys Springboard</div>
-            <p class="text-white/50 text-sm">Strengthened programming fundamentals and Python concepts for real-world projects.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">🐍</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Basics of Python</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Infosys Springboard</div>
+            <p class="muted50" style="font-size:0.875rem;">Strengthened programming fundamentals and Python concepts for real-world projects.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">✍️</span>
-            <h4 class="syne font-bold text-lg mb-1">Professional Writing II</h4>
-            <div class="text-xs text-white/40 mb-4">Saylor Academy • 100%</div>
-            <p class="text-white/50 text-sm">Evaluating sources, references & delivering credible, trustworthy content.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">✍️</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Professional Writing II</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Saylor Academy • 100%</div>
+            <p class="muted50" style="font-size:0.875rem;">Evaluating sources, references & delivering credible, trustworthy content.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">📊</span>
-            <h4 class="syne font-bold text-lg mb-1">Advanced Power BI Workshop</h4>
-            <div class="text-xs text-white/40 mb-4">upGrad • 6 Nov 2025</div>
-            <p class="text-white/50 text-sm">Interactive dashboards, data visualization & actionable insights.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">📊</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Advanced Power BI Workshop</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">upGrad • 6 Nov 2025</div>
+            <p class="muted50" style="font-size:0.875rem;">Interactive dashboards, data visualization & actionable insights.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">💼</span>
-            <h4 class="syne font-bold text-lg mb-1">Professional Skills Job Simulation</h4>
-            <div class="text-xs text-white/40 mb-4">Discover • Forage</div>
-            <p class="text-white/50 text-sm">Hands-on real-world professional scenarios, self-awareness & teamwork.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">💼</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Professional Skills Job Simulation</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Discover • Forage</div>
+            <p class="muted50" style="font-size:0.875rem;">Hands-on real-world professional scenarios, self-awareness & teamwork.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">✍️</span>
-            <h4 class="syne font-bold text-lg mb-1">Professional Writing</h4>
-            <div class="text-xs text-white/40 mb-4">Saylor Academy • 12 hours</div>
-            <p class="text-white/50 text-sm">Structured, impactful & audience-focused writing for academic & freelance work.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">✍️</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Professional Writing</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Saylor Academy • 12 hours</div>
+            <p class="muted50" style="font-size:0.875rem;">Structured, impactful & audience-focused writing for academic & freelance work.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">👥</span>
-            <h4 class="syne font-bold text-lg mb-1">Leadership and Teams</h4>
-            <div class="text-xs text-white/40 mb-4">Saylor Academy • PRDV224</div>
-            <p class="text-white/50 text-sm">Building high-performing teams, leadership dynamics & collaboration.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">👥</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Leadership and Teams</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Saylor Academy • PRDV224</div>
+            <p class="muted50" style="font-size:0.875rem;">Building high-performing teams, leadership dynamics & collaboration.</p>
         </div>
-        <div class="glass-card p-7">
-            <span class="text-cyan text-2xl mb-3 block">⏳</span>
-            <h4 class="syne font-bold text-lg mb-1">Time and Stress Management</h4>
-            <div class="text-xs text-white/40 mb-4">Saylor Academy • PRDV005 • 1 Nov 2025</div>
-            <p class="text-white/50 text-sm">Strategies for productivity, balance & personal growth.</p>
+        <div class="glass-card cert-card">
+            <span class="text-cyan" style="font-size:1.5rem;margin-bottom:12px;display:block;">⏳</span>
+            <h4 class="syne" style="font-weight:700;font-size:1.125rem;margin-bottom:4px;">Time and Stress Management</h4>
+            <div class="muted40" style="font-size:0.75rem;margin-bottom:16px;">Saylor Academy • PRDV005 • 1 Nov 2025</div>
+            <p class="muted50" style="font-size:0.875rem;">Strategies for productivity, balance & personal growth.</p>
         </div>
     </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="py-28 border-t divider" style="background: radial-gradient(ellipse 100% 60% at 50% 0%, rgba(20,240,200,0.04) 0%, transparent 70%);">
-    <div class="max-w-screen-xl mx-auto px-8">
-        <div class="text-center mb-16 reveal">
+<section id="skills" class="skills-section divider">
+    <div class="container">
+        <div class="section-center mb-16 reveal">
             <div class="section-label mb-4">Skills & Technologies</div>
-            <h2 class="syne text-5xl font-extrabold tracking-tight mb-4">What I Bring to the Table</h2>
-            <p class="text-white/40 max-w-lg mx-auto">A multidisciplinary stack — from ML pipelines to brand narratives. Click a tab to explore.</p>
+            <h2 class="section-h2" style="margin-bottom:16px;">What I Bring to the Table</h2>
+            <p class="muted40" style="max-width:32rem;margin:0 auto;">A multidisciplinary stack — from ML pipelines to brand narratives. Click a tab to explore.</p>
         </div>
-        <div class="skills-tabs-wrapper reveal">
-            <div class="tab-rail relative mb-10" id="tabRail">
+        <div class="reveal">
+            <div class="tab-rail" id="tabRail">
                 <div class="tab-indicator" id="tabIndicator"></div>
                 <button class="tab-btn active" data-tab="languages"><span>📝</span> Languages</button>
                 <button class="tab-btn" data-tab="webdev"><span>🌐</span> Web Dev</button>
@@ -563,56 +641,44 @@
             <div id="tabContent">
                 <!-- LANGUAGES -->
                 <div class="tab-panel active" data-panel="languages">
-                    <div class="grid md:grid-cols-4 gap-4">
+                    <div class="grid-4">
                         <div class="skill-card">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-xl">🐍</div>
-                                <div>
-                                    <div class="syne font-bold text-sm">Python</div>
-                                    <div class="text-xs text-white/30">Primary language</div>
-                                </div>
+                            <div class="skill-header">
+                                <div class="skill-icon-wrap" style="background:rgba(59,130,246,0.2);">🐍</div>
+                                <div class="skill-header-info"><div class="label">Python</div><div class="sub">Primary language</div></div>
                             </div>
                             <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.92"></div></div>
-                            <div class="text-right text-xs text-cyan mt-1.5 syne font-bold">92%</div>
+                            <div class="skill-pct">92%</div>
                         </div>
                         <div class="skill-card">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center text-xl">⚡</div>
-                                <div>
-                                    <div class="syne font-bold text-sm">JavaScript</div>
-                                    <div class="text-xs text-white/30">Web scripting</div>
-                                </div>
+                            <div class="skill-header">
+                                <div class="skill-icon-wrap" style="background:rgba(234,179,8,0.2);">⚡</div>
+                                <div class="skill-header-info"><div class="label">JavaScript</div><div class="sub">Web scripting</div></div>
                             </div>
                             <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.75"></div></div>
-                            <div class="text-right text-xs text-cyan mt-1.5 syne font-bold">75%</div>
+                            <div class="skill-pct">75%</div>
                         </div>
                         <div class="skill-card">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center text-xl">☕</div>
-                                <div>
-                                    <div class="syne font-bold text-sm">Java</div>
-                                    <div class="text-xs text-white/30">OOP & backend</div>
-                                </div>
+                            <div class="skill-header">
+                                <div class="skill-icon-wrap" style="background:rgba(249,115,22,0.2);">☕</div>
+                                <div class="skill-header-info"><div class="label">Java</div><div class="sub">OOP & backend</div></div>
                             </div>
                             <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.70"></div></div>
-                            <div class="text-right text-xs text-cyan mt-1.5 syne font-bold">70%</div>
+                            <div class="skill-pct">70%</div>
                         </div>
                         <div class="skill-card">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 rounded-xl bg-blue-700/20 flex items-center justify-center text-xl">⚙️</div>
-                                <div>
-                                    <div class="syne font-bold text-sm">C</div>
-                                    <div class="text-xs text-white/30">Systems & DSA</div>
-                                </div>
+                            <div class="skill-header">
+                                <div class="skill-icon-wrap" style="background:rgba(29,78,216,0.2);">⚙️</div>
+                                <div class="skill-header-info"><div class="label">C</div><div class="sub">Systems & DSA</div></div>
                             </div>
                             <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.68"></div></div>
-                            <div class="text-right text-xs text-cyan mt-1.5 syne font-bold">68%</div>
+                            <div class="skill-pct">68%</div>
                         </div>
                     </div>
                 </div>
                 <!-- WEB DEV -->
                 <div class="tab-panel" data-panel="webdev">
-                    <div class="flex flex-wrap gap-3">
+                    <div class="skill-pills" style="margin-bottom:32px;">
                         <span class="skill-pill"><span class="dot"></span>HTML5</span>
                         <span class="skill-pill"><span class="dot"></span>CSS3</span>
                         <span class="skill-pill"><span class="dot"></span>Responsive Design</span>
@@ -620,63 +686,63 @@
                         <span class="skill-pill"><span class="dot"></span>Web Development</span>
                         <span class="skill-pill"><span class="dot"></span>UI/UX Basics</span>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-5 mt-8">
-                        <div class="skill-card text-center py-8">
-                            <div class="text-4xl mb-3">🎨</div>
-                            <div class="syne font-bold">Frontend Design</div>
-                            <div class="text-white/30 text-xs mt-1">HTML · CSS · JS</div>
+                    <div class="grid-3">
+                        <div class="skill-card" style="text-align:center;padding:32px 20px;">
+                            <div style="font-size:2.5rem;margin-bottom:12px;">🎨</div>
+                            <div class="syne" style="font-weight:700;">Frontend Design</div>
+                            <div class="muted30" style="font-size:0.75rem;margin-top:4px;">HTML · CSS · JS</div>
                         </div>
-                        <div class="skill-card text-center py-8">
-                            <div class="text-4xl mb-3">📱</div>
-                            <div class="syne font-bold">Responsive Layouts</div>
-                            <div class="text-white/30 text-xs mt-1">Mobile-first approach</div>
+                        <div class="skill-card" style="text-align:center;padding:32px 20px;">
+                            <div style="font-size:2.5rem;margin-bottom:12px;">📱</div>
+                            <div class="syne" style="font-weight:700;">Responsive Layouts</div>
+                            <div class="muted30" style="font-size:0.75rem;margin-top:4px;">Mobile-first approach</div>
                         </div>
-                        <div class="skill-card text-center py-8">
-                            <div class="text-4xl mb-3">🌐</div>
-                            <div class="syne font-bold">Web Publishing</div>
-                            <div class="text-white/30 text-xs mt-1">Deploy & maintain</div>
+                        <div class="skill-card" style="text-align:center;padding:32px 20px;">
+                            <div style="font-size:2.5rem;margin-bottom:12px;">🌐</div>
+                            <div class="syne" style="font-weight:700;">Web Publishing</div>
+                            <div class="muted30" style="font-size:0.75rem;margin-top:4px;">Deploy & maintain</div>
                         </div>
                     </div>
                 </div>
                 <!-- DATA & ML -->
                 <div class="tab-panel" data-panel="dataml">
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <div class="grid-2">
                         <div>
-                            <div class="text-xs text-white/30 syne uppercase tracking-widest mb-5">Core Libraries</div>
-                            <div class="space-y-4">
+                            <div class="subhead">Core Libraries</div>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
                                 <div class="skill-card">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="syne font-bold text-sm">Machine Learning</span>
-                                        <span class="text-cyan text-xs syne font-bold">Beginner</span>
+                                    <div class="flex-between" style="margin-bottom:8px;">
+                                        <span class="syne" style="font-weight:700;font-size:0.875rem;">Machine Learning</span>
+                                        <span class="skill-level">Beginner</span>
                                     </div>
                                     <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.90"></div></div>
                                 </div>
                                 <div class="skill-card">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="syne font-bold text-sm">Pandas & NumPy</span>
-                                        <span class="text-cyan text-xs syne font-bold">Expert</span>
+                                    <div class="flex-between" style="margin-bottom:8px;">
+                                        <span class="syne" style="font-weight:700;font-size:0.875rem;">Pandas & NumPy</span>
+                                        <span class="skill-level">Expert</span>
                                     </div>
                                     <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.88"></div></div>
                                 </div>
                                 <div class="skill-card">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="syne font-bold text-sm">Scikit-learn</span>
-                                        <span class="text-cyan text-xs syne font-bold">Advanced</span>
+                                    <div class="flex-between" style="margin-bottom:8px;">
+                                        <span class="syne" style="font-weight:700;font-size:0.875rem;">Scikit-learn</span>
+                                        <span class="skill-level">Advanced</span>
                                     </div>
                                     <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.82"></div></div>
                                 </div>
                                 <div class="skill-card">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="syne font-bold text-sm">Data Analysis</span>
-                                        <span class="text-cyan text-xs syne font-bold">Advanced</span>
+                                    <div class="flex-between" style="margin-bottom:8px;">
+                                        <span class="syne" style="font-weight:700;font-size:0.875rem;">Data Analysis</span>
+                                        <span class="skill-level">Advanced</span>
                                     </div>
                                     <div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.85"></div></div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="text-xs text-white/30 syne uppercase tracking-widest mb-5">Techniques & Databases</div>
-                            <div class="flex flex-wrap gap-3">
+                            <div class="subhead">Techniques & Databases</div>
+                            <div class="skill-pills">
                                 <span class="skill-pill"><span class="dot"></span>Deep Learning</span>
                                 <span class="skill-pill"><span class="dot"></span>NLP</span>
                                 <span class="skill-pill"><span class="dot"></span>Time-Series</span>
@@ -693,37 +759,37 @@
                         </div>
                     </div>
                 </div>
-                <!-- AI TOOLS -->
+                <!-- TOOLS -->
                 <div class="tab-panel" data-panel="aitools">
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="skill-card text-center py-8"><div class="text-4xl mb-3">🔧</div><div class="syne font-bold">Git</div><div class="text-white/30 text-xs mt-1">Version control</div></div>
-                        <div class="skill-card text-center py-8"><div class="text-4xl mb-3">🐙</div><div class="syne font-bold">GitHub</div><div class="text-white/30 text-xs mt-1">Collaboration</div></div>
-                        <div class="skill-card text-center py-8"><div class="text-4xl mb-3">💻</div><div class="syne font-bold">VS Code</div><div class="text-white/30 text-xs mt-1">Primary IDE</div></div>
-                        <div class="skill-card text-center py-8"><div class="text-4xl mb-3">📐</div><div class="syne font-bold">AutoCAD</div><div class="text-white/30 text-xs mt-1">Technical drawing</div></div>
+                    <div class="grid-4">
+                        <div class="skill-card" style="text-align:center;padding:32px 20px;"><div style="font-size:2.5rem;margin-bottom:12px;">🔧</div><div class="syne" style="font-weight:700;">Git</div><div class="muted30" style="font-size:0.75rem;margin-top:4px;">Version control</div></div>
+                        <div class="skill-card" style="text-align:center;padding:32px 20px;"><div style="font-size:2.5rem;margin-bottom:12px;">🐙</div><div class="syne" style="font-weight:700;">GitHub</div><div class="muted30" style="font-size:0.75rem;margin-top:4px;">Collaboration</div></div>
+                        <div class="skill-card" style="text-align:center;padding:32px 20px;"><div style="font-size:2.5rem;margin-bottom:12px;">💻</div><div class="syne" style="font-weight:700;">VS Code</div><div class="muted30" style="font-size:0.75rem;margin-top:4px;">Primary IDE</div></div>
+                        <div class="skill-card" style="text-align:center;padding:32px 20px;"><div style="font-size:2.5rem;margin-bottom:12px;">📐</div><div class="syne" style="font-weight:700;">AutoCAD</div><div class="muted30" style="font-size:0.75rem;margin-top:4px;">Technical drawing</div></div>
                     </div>
                 </div>
                 <!-- WRITING -->
                 <div class="tab-panel" data-panel="writing">
-                    <div class="grid md:grid-cols-3 gap-5">
-                        <div class="skill-card py-7"><div class="text-2xl mb-3">📝</div><div class="syne font-bold mb-1">Content Writing</div><div class="text-white/40 text-xs leading-relaxed">Long-form articles, blogs, educational content.</div></div>
-                        <div class="skill-card py-7"><div class="text-2xl mb-3">🔬</div><div class="syne font-bold mb-1">Technical Writing</div><div class="text-white/40 text-xs leading-relaxed">Documentation, reports, white papers.</div></div>
-                        <div class="skill-card py-7"><div class="text-2xl mb-3">✨</div><div class="syne font-bold mb-1">Creative Writing</div><div class="text-white/40 text-xs leading-relaxed">Fiction, non-fiction & brand storytelling.</div></div>
-                        <div class="skill-card py-7"><div class="text-2xl mb-3">🌍</div><div class="syne font-bold mb-1">Web Content</div><div class="text-white/40 text-xs leading-relaxed">SEO-optimised landing pages & UX writing.</div></div>
-                        <div class="skill-card py-7"><div class="text-2xl mb-3">📊</div><div class="syne font-bold mb-1">Report Writing</div><div class="text-white/40 text-xs leading-relaxed">Data-driven narratives.</div></div>
-                        <div class="skill-card py-7"><div class="text-2xl mb-3">💼</div><div class="syne font-bold mb-1">Freelancing</div><div class="text-white/40 text-xs leading-relaxed">High-quality writing for clients worldwide.</div></div>
+                    <div class="grid-3">
+                        <div class="skill-card" style="padding:28px 20px;"><div style="font-size:1.5rem;margin-bottom:12px;">📝</div><div class="syne" style="font-weight:700;margin-bottom:4px;">Content Writing</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">Long-form articles, blogs, educational content.</div></div>
+                        <div class="skill-card" style="padding:28px 20px;"><div style="font-size:1.5rem;margin-bottom:12px;">🔬</div><div class="syne" style="font-weight:700;margin-bottom:4px;">Technical Writing</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">Documentation, reports, white papers.</div></div>
+                        <div class="skill-card" style="padding:28px 20px;"><div style="font-size:1.5rem;margin-bottom:12px;">✨</div><div class="syne" style="font-weight:700;margin-bottom:4px;">Creative Writing</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">Fiction, non-fiction & brand storytelling.</div></div>
+                        <div class="skill-card" style="padding:28px 20px;"><div style="font-size:1.5rem;margin-bottom:12px;">🌍</div><div class="syne" style="font-weight:700;margin-bottom:4px;">Web Content</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">SEO-optimised landing pages & UX writing.</div></div>
+                        <div class="skill-card" style="padding:28px 20px;"><div style="font-size:1.5rem;margin-bottom:12px;">📊</div><div class="syne" style="font-weight:700;margin-bottom:4px;">Report Writing</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">Data-driven narratives.</div></div>
+                        <div class="skill-card" style="padding:28px 20px;"><div style="font-size:1.5rem;margin-bottom:12px;">💼</div><div class="syne" style="font-weight:700;margin-bottom:4px;">Freelancing</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">High-quality writing for clients worldwide.</div></div>
                     </div>
                 </div>
                 <!-- MARKETING -->
                 <div class="tab-panel" data-panel="marketing">
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="skill-card py-8 text-center"><div class="text-4xl mb-4">📣</div><div class="syne font-bold text-base mb-2">Social Media Marketing</div><div class="text-white/40 text-xs leading-relaxed">Content calendars & campaigns.</div></div>
-                        <div class="skill-card py-8 text-center"><div class="text-4xl mb-4">📱</div><div class="syne font-bold text-base mb-2">Social Media Management</div><div class="text-white/40 text-xs leading-relaxed">End-to-end brand presence.</div></div>
-                        <div class="skill-card py-8 text-center"><div class="text-4xl mb-4">🎯</div><div class="syne font-bold text-base mb-2">Brand Storytelling</div><div class="text-white/40 text-xs leading-relaxed">Narratives that align vision & emotion.</div></div>
+                    <div class="grid-3">
+                        <div class="skill-card" style="padding:32px 20px;text-align:center;"><div style="font-size:2.5rem;margin-bottom:16px;">📣</div><div class="syne" style="font-weight:700;font-size:1rem;margin-bottom:8px;">Social Media Marketing</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">Content calendars & campaigns.</div></div>
+                        <div class="skill-card" style="padding:32px 20px;text-align:center;"><div style="font-size:2.5rem;margin-bottom:16px;">📱</div><div class="syne" style="font-weight:700;font-size:1rem;margin-bottom:8px;">Social Media Management</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">End-to-end brand presence.</div></div>
+                        <div class="skill-card" style="padding:32px 20px;text-align:center;"><div style="font-size:2.5rem;margin-bottom:16px;">🎯</div><div class="syne" style="font-weight:700;font-size:1rem;margin-bottom:8px;">Brand Storytelling</div><div class="muted40" style="font-size:0.75rem;line-height:1.6;">Narratives that align vision & emotion.</div></div>
                     </div>
                 </div>
                 <!-- PROFESSIONAL -->
                 <div class="tab-panel" data-panel="professional">
-                    <div class="flex flex-wrap gap-3">
+                    <div class="skill-pills" style="margin-bottom:32px;">
                         <span class="skill-pill"><span class="dot"></span>Leadership</span>
                         <span class="skill-pill"><span class="dot"></span>Team Leadership</span>
                         <span class="skill-pill"><span class="dot"></span>Leadership Development</span>
@@ -737,115 +803,104 @@
                         <span class="skill-pill"><span class="dot"></span>Critical Thinking</span>
                         <span class="skill-pill"><span class="dot"></span>Adaptability</span>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-5 mt-8">
-                        <div class="skill-card"><div class="syne font-bold mb-3 text-sm">Leadership & Management</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.88"></div></div><div class="text-right text-xs text-cyan mt-1 syne font-bold">88%</div></div>
-                        <div class="skill-card"><div class="syne font-bold mb-3 text-sm">Communication</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.93"></div></div><div class="text-right text-xs text-cyan mt-1 syne font-bold">93%</div></div>
-                        <div class="skill-card"><div class="syne font-bold mb-3 text-sm">Problem Solving</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.86"></div></div><div class="text-right text-xs text-cyan mt-1 syne font-bold">86%</div></div>
-                        <div class="skill-card"><div class="syne font-bold mb-3 text-sm">Time Management</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.84"></div></div><div class="text-right text-xs text-cyan mt-1 syne font-bold">84%</div></div>
+                    <div class="grid-2">
+                        <div class="skill-card"><div class="syne" style="font-weight:700;margin-bottom:12px;font-size:0.875rem;">Leadership & Management</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.88"></div></div><div class="skill-pct">88%</div></div>
+                        <div class="skill-card"><div class="syne" style="font-weight:700;margin-bottom:12px;font-size:0.875rem;">Communication</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.93"></div></div><div class="skill-pct">93%</div></div>
+                        <div class="skill-card"><div class="syne" style="font-weight:700;margin-bottom:12px;font-size:0.875rem;">Problem Solving</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.86"></div></div><div class="skill-pct">86%</div></div>
+                        <div class="skill-card"><div class="syne" style="font-weight:700;margin-bottom:12px;font-size:0.875rem;">Time Management</div><div class="prof-bar-track"><div class="prof-bar-fill" data-width="0.84"></div></div><div class="skill-pct">84%</div></div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- GOALS -->
-        <div class="mt-24 pt-16 border-t divider reveal">
-            <div class="text-center mb-10">
+        <div style="margin-top:96px;padding-top:64px;border-top:1px solid rgba(255,255,255,0.06);" class="reveal">
+            <div class="section-center" style="margin-bottom:40px;">
                 <div class="section-label mb-3">🎯 Goals & Aspirations</div>
             </div>
-            <div class="flex flex-wrap gap-3 justify-center">
-                <span class="goal-chip bg-white/[0.03]">🚀 Showcase Skills</span>
-                <span class="goal-chip bg-white/[0.03]">📈 Track Growth</span>
-                <span class="goal-chip bg-white/[0.03]">🏗️ Build Real-World Projects</span>
-                <span class="goal-chip bg-white/[0.03]">💼 Freelancing & Career Growth</span>
-                <span class="goal-chip bg-white/[0.03]">🧠 Learn Problem Solving</span>
-                <span class="goal-chip bg-white/[0.03]">✍️ Freelance Writer</span>
-                <span class="goal-chip bg-white/[0.03]">💻 Aspiring Software Engineer</span>
-                <span class="goal-chip bg-white/[0.03]">🌐 Aspiring Web Developer</span>
-                <span class="goal-chip bg-white/[0.03]">📱 Social Media Manager</span>
-                <span class="goal-chip bg-white/[0.03]">🔮 Future Data Scientist</span>
-                <span class="goal-chip bg-white/[0.03]">⚡ Tech + Creativity</span>
-                <span class="goal-chip bg-white/[0.03]">🎓 Seeking Internships</span>
-                <span class="goal-chip bg-white/[0.03]">🤝 Open to Mentorship</span>
-                <span class="goal-chip bg-white/[0.03]">🌟 Open to Collaborations</span>
-                <span class="goal-chip bg-white/[0.03]">🎬 Build Digital Content Career</span>
+            <div class="goals-chips">
+                <span class="goal-chip">🚀 Showcase Skills</span>
+                <span class="goal-chip">📈 Track Growth</span>
+                <span class="goal-chip">🏗️ Build Real-World Projects</span>
+                <span class="goal-chip">💼 Freelancing & Career Growth</span>
+                <span class="goal-chip">🧠 Learn Problem Solving</span>
+                <span class="goal-chip">✍️ Freelance Writer</span>
+                <span class="goal-chip">💻 Aspiring Software Engineer</span>
+                <span class="goal-chip">🌐 Aspiring Web Developer</span>
+                <span class="goal-chip">📱 Social Media Manager</span>
+                <span class="goal-chip">🔮 Future Data Scientist</span>
+                <span class="goal-chip">⚡ Tech + Creativity</span>
+                <span class="goal-chip">🎓 Seeking Internships</span>
+                <span class="goal-chip">🤝 Open to Mentorship</span>
+                <span class="goal-chip">🌟 Open to Collaborations</span>
+                <span class="goal-chip">🎬 Build Digital Content Career</span>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="max-w-screen-xl mx-auto px-8 py-32 border-t divider reveal">
-    <div class="max-w-2xl mx-auto relative">
-        <div class="contact-glow absolute inset-0 rounded-3xl"></div>
-        <div class="relative glass-card p-16 text-center border border-white/08">
-            <div class="absolute inset-0 opacity-5 rounded-3xl" style="background-image: radial-gradient(circle, #14f0c8 1px, transparent 1px); background-size: 32px 32px;"></div>
-            <i class="fa-solid fa-paper-plane text-5xl text-cyan mb-8 block relative z-10"></i>
-            <h2 class="syne text-5xl font-extrabold tracking-tight mb-5 relative z-10">
-                Need a <span class="text-cyan">Technical<br>Storyteller</span>?
-            </h2>
-            <p class="text-white/50 max-w-sm mx-auto mb-10 relative z-10 leading-relaxed">
-                I help clients turn raw data into brand narratives that convert. ML model, content strategy, or both — let's build.
-            </p>
-            <a href="mailto:suvaniwaghmare02@gmail.com" class="btn-primary inline-flex items-center gap-3 px-12 py-5 text-base relative z-10">
-                Get In Touch <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
-            <div class="flex justify-center gap-8 mt-12 relative z-10">
-                <a href="https://www.linkedin.com/in/suvani-waghmare" target="_blank" class="text-2xl text-white/30 hover:text-cyan transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://x.com/SuvaniW61316" target="_blank" class="text-2xl text-white/30 hover:text-cyan transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="mailto:suvaniwaghmare02@gmail.com" class="text-2xl text-white/30 hover:text-cyan transition-colors"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://github.com/suvaniwaghmare085-droid" target="_blank" class="text-2xl text-white/30 hover:text-cyan transition-colors"><i class="fa-brands fa-github"></i></a>
+<section id="contact" class="divider reveal">
+    <div class="contact-section">
+        <div class="contact-wrap">
+            <div class="contact-glow"></div>
+            <div class="glass-card contact-card">
+                <div class="contact-dot-bg"></div>
+                <i class="fa-solid fa-paper-plane contact-icon"></i>
+                <h2 class="contact-h2 syne">
+                    Need a <span class="text-cyan">Technical<br>Storyteller</span>?
+                </h2>
+                <p class="contact-p">
+                    I help clients turn raw data into brand narratives that convert. ML model, content strategy, or both — let's build.
+                </p>
+                <a href="mailto:suvaniwaghmare02@gmail.com" class="btn-primary btn-lg" style="position:relative;z-index:10;">
+                    Get In Touch <i class="fa-solid fa-arrow-right" style="font-size:0.875rem;"></i>
+                </a>
+                <div class="contact-socials">
+                    <a href="https://www.linkedin.com/in/suvani-waghmare" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://x.com/SuvaniW61316" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="mailto:suvaniwaghmare02@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://github.com/suvaniwaghmare085-droid" target="_blank"><i class="fa-brands fa-github"></i></a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="py-10 text-center">
-    <div class="max-w-screen-xl mx-auto px-8">
-        <div class="syne font-extrabold text-xl tracking-tighter mb-4">SWL<span class="text-cyan">.</span></div>
-        <p class="text-white/25 text-sm">© 2025 Suvani Waghmore. Designed with data & creativity.</p>
+<footer>
+    <div class="footer-inner">
+        <div class="syne" style="font-weight:800;font-size:1.25rem;letter-spacing:-0.05em;margin-bottom:16px;">SWL<span class="text-cyan">.</span></div>
+        <p style="color:rgba(255,255,255,0.25);font-size:0.875rem;">© 2025 Suvani Waghmore. Designed with data & creativity.</p>
     </div>
 </footer>
 
 <script>
-// THEME TOGGLE
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
-
 function setTheme(mode) {
     if (mode === 'light') {
-        body.classList.remove('dark');
-        body.classList.add('light');
+        body.classList.remove('dark'); body.classList.add('light');
         themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
         localStorage.setItem('theme', 'light');
     } else {
-        body.classList.remove('light');
-        body.classList.add('dark');
+        body.classList.remove('light'); body.classList.add('dark');
         themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
         localStorage.setItem('theme', 'dark');
     }
 }
-
-// Load saved theme
-if (localStorage.getItem('theme') === 'light') setTheme('light');
-else setTheme('dark');
-
+try { if (localStorage.getItem('theme') === 'light') setTheme('light'); else setTheme('dark'); } catch(e) { setTheme('dark'); }
 themeToggle.addEventListener('click', () => {
-    if (body.classList.contains('light')) setTheme('dark');
-    else setTheme('light');
+    body.classList.contains('light') ? setTheme('dark') : setTheme('light');
 });
 
 // CURSOR GLOW
 const glow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-});
+document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
 
 // TAB SYSTEM
 const tabBtns = document.querySelectorAll('.tab-btn');
 const tabPanels = document.querySelectorAll('.tab-panel');
 const indicator = document.getElementById('tabIndicator');
-
 function moveIndicator(btn) {
     const rail = document.getElementById('tabRail');
     const railRect = rail.getBoundingClientRect();
@@ -855,7 +910,6 @@ function moveIndicator(btn) {
     indicator.style.width = btnRect.width + 'px';
     indicator.style.height = btnRect.height + 'px';
 }
-
 function switchTab(targetTab) {
     tabBtns.forEach(b => b.classList.remove('active'));
     tabPanels.forEach(p => p.classList.remove('active'));
@@ -865,22 +919,13 @@ function switchTab(targetTab) {
     if (activePanel) { activePanel.classList.add('active'); }
     requestAnimationFrame(() => animateBars());
 }
-
 tabBtns.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
-
-window.addEventListener('load', () => {
-    const firstActive = document.querySelector('.tab-btn.active');
-    if (firstActive) moveIndicator(firstActive);
-});
-window.addEventListener('resize', () => {
-    const active = document.querySelector('.tab-btn.active');
-    if (active) moveIndicator(active);
-});
+window.addEventListener('load', () => { const firstActive = document.querySelector('.tab-btn.active'); if (firstActive) moveIndicator(firstActive); });
+window.addEventListener('resize', () => { const active = document.querySelector('.tab-btn.active'); if (active) moveIndicator(active); });
 
 // PROFICIENCY BARS
 function animateBars() {
-    const activePanelBars = document.querySelectorAll('.tab-panel.active .prof-bar-fill');
-    activePanelBars.forEach((bar, i) => {
+    document.querySelectorAll('.tab-panel.active .prof-bar-fill').forEach((bar, i) => {
         const w = parseFloat(bar.dataset.width);
         bar.style.transform = 'scaleX(0)';
         setTimeout(() => bar.style.transform = `scaleX(${w})`, i * 120 + 50);
@@ -889,8 +934,7 @@ function animateBars() {
 setTimeout(animateBars, 300);
 
 // SCROLL REVEAL
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
@@ -898,20 +942,15 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.12 });
-revealEls.forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
 });
-
-console.log('%c✅ Portfolio fixed — Tailwind CDN production warning removed!', 'color:#14f0c8; font-size:14px; font-weight:700');
 </script>
 </body>
 </html>
