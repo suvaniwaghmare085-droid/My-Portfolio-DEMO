@@ -1,7 +1,7 @@
 <div align="center">
   <img src="Pixel Art Font Projects.gif" width="100%" alt="Mysterious Header GIF"/>
 </div>
-<h1 align="center">👤 Suvani Waghmore</h1>
+<h1 align="center">👤 Suvani Waghmare</h1>
 <h3 align="center">Technical Storyteller Turning hidden patterns into narratives that move markets.</h3>
 
 <p align="center">
@@ -69,5 +69,5 @@ Open to quiet collaborations that matter.
 
 <div align="center">
   Some stories are better left unfinished.<br>
-  © 2026 Suvani Waghmore •
+  © 2026 Suvani Waghmare •
 </div>
