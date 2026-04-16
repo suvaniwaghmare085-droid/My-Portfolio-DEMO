@@ -1,69 +1,75 @@
- # Suvani Waghmore | Technical Storyteller
- 
-**Turning raw data into narratives that perform and persuade.**
+<div align="center">
+  <img src="https://via.placeholder.com/1200x320/0A0A0A/00E6A9?text=???" width="100%" alt="Mysterious Header"/>
+</div>
 
-<img src="https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/suvani-profile.jpeg" alt="Suvani Waghmore" width="180" style="border-radius: 50%;">
+<h1 align="center">👤 Suvani Waghmore</h1>
+<h3 align="center">Technical Storyteller — Turning hidden patterns into narratives that move markets.</h3>
 
-### The Spark
-
-What if your data didn’t just sit in dashboards… but actually **told a story** that moved people to act?
-
-That’s the intersection I live in where machine learning meets brand narrative. I build intelligent systems that don’t just predict outcomes; they help brands **connect**, **convert**, and **scale**.
-
-Currently pursuing **B.Tech in Computer Science** with a sharp focus on **Data Science & Machine Learning**, I blend technical depth with creative execution.
-
-### What You’ll Find Here
-
-This repository powers my living portfolio  a modern, responsive showcase built to reflect the same attention to detail I bring to every project.
-
-- **Live Experience** → [View the Portfolio](https://suvaniwaghmare085-droid.github.io/My-Portfolio-DEMO/) 
-- **Full CV** → [Download PDF](https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf)
-
-### Selected Work
-
-Here’s a glimpse into the kind of problems I enjoy solving:
-
-- **Manexa Sample Dashboard** — Interactive sales & analytics dashboard using Python, Pandas & Plotly
-- **Movie Dataset Analysis** — Deep dive into IMDb data revealing hidden patterns in cinema
-- **Quiz Game** — Story-driven interactive experience blending logic, creativity & frontend magic
-- **Bug Hunt Game** — Fun, logic-based game to sharpen interactivity and problem-solving
-- **This Portfolio Itself** — Designed from scratch with smooth animations, dark/light mode, and a premium feel
-
-Each project reflects my obsession with **clarity + impact**.
-
-### Skills Snapshot
-
-**Core Languages**  
-Python • JavaScript • Java • C
-
-**Data & ML**  
-Pandas • NumPy • Scikit-learn • Data Visualization (Plotly) • Machine Learning pipelines • Exploratory Analysis
-
-**Web & Design**  
-HTML5 • CSS3 • Tailwind • Responsive Design • Modern UI/UX
-
-**Other Strengths**  
-Technical & Creative Writing • Brand Storytelling • Social Media Strategy • Leadership & Problem Solving
-
-### Let’s Build Something That Matters
-
-Whether you’re looking for:
-- A data-driven storyteller for your next campaign
-- A passionate intern ready to contribute to real ML projects
-- Or a collaborator who can turn complex ideas into compelling narratives…
-
-I’d love to connect.
-
-**Open to** — Internships, freelance opportunities, mentorship, and meaningful collaborations in Data Science, ML, Content Strategy, or Web Development.
-
-📧 **suvaniwaghmare02@gmail.com**  
-🔗 [LinkedIn](https://www.linkedin.com/in/suvani-waghmare)  
-𝕏 [Twitter/X](https://x.com/SuvaniW61316)  
-🐙 [GitHub](https://github.com/suvaniwaghmare085-droid)
+<p align="center">
+  <a href="mailto:suvaniwaghmare02@gmail.com"><img src="https://img.shields.io/badge/Contact-0A0A0A?style=for-the-badge&logo=gmail&logoColor=00E6A9" alt="Contact"/></a>
+  <a href="https://github.com/suvaniwaghmare085-droid"><img src="https://img.shields.io/badge/GitHub-0A0A0A?style=for-the-badge&logo=github&logoColor=00E6A9" alt="GitHub"/></a>
+</p>
 
 ---
 
-*“Data is the new oil. But without a great story, it’s just a sticky mess.”*  
-— Building the bridge between numbers and narratives.
+### 🌀 About the Shadow
 
-© 2025 Suvani Waghmore
+Somewhere between raw data and human desire, I weave stories that convert.
+
+B.Tech CSE.  
+I don’t just analyze data — I make it speak.
+
+Currently operating in silence: building unseen models and crafting brand narratives that work while no one’s watching.
+
+- 🌑 Currently: Training models that see what others miss
+- 🌱 Learning: The darker arts of Python, pipelines & persuasion
+- ⚡ Known for: Creating a bug-hunting game that breaks developers across six languages… and then fixes them.
+
+Location: Phagwāra, Punjab — but the real work happens in the unseen layers.
+
+---
+
+### 🛠️ Arsenal
+
+**Languages**  
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
+
+**Core**  
+Pandas • NumPy • Scikit-learn • Plotly • TensorFlow • Tailwind • MySQL
+
+---
+
+### 🕳️ VIEW LIVE PORTFOILIO
+
+A living interface. Glass, motion, and controlled chaos.  
+-**Live Experience** → [View the Portfolio](https://suvaniwaghmare085-droid.github.io/My-Portfolio-DEMO/) 
+
+
+### 🏆 Echoes of Proof
+
+- Introduction to Python — 98.42% (Saylor Academy)
+- Professional Writing II — 100% (Saylor Academy)
+- Advanced Power BI • Cyber Security • Leadership
+
+---
+
+### 🔥 The Path Ahead
+
+Mastering the unseen.  
+Building what others can’t explain.  
+Open to quiet collaborations that matter.
+
+---
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=suvaniwaghmare085-droid&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0A0A0A&title_color=00E6A9&text_color=FFFFFF&icon_color=00E6A9" height="170"/>
+</div>
+
+<br>
+
+<div align="center">
+  Some stories are better left unfinished.<br>
+  © 2026 Suvani Waghmore •
+</div>
