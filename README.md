@@ -1,7 +1,6 @@
 <div align="center">
-  <img src="https://via.placeholder.com/1200x320/0A0A0A/00E6A9?text=???" width="100%" alt="Mysterious Header"/>
+  <img src="YOUR_GIF_URL_HERE" width="100%" alt="Mysterious Header GIF"/>
 </div>
-
 <h1 align="center">👤 Suvani Waghmore</h1>
 <h3 align="center">Technical Storyteller — Turning hidden patterns into narratives that move markets.</h3>
 
