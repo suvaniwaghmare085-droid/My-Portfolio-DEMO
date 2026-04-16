@@ -2,7 +2,7 @@
   <img src="Pixel Art Font Projects.gif" width="100%" alt="Mysterious Header GIF"/>
 </div>
 <h1 align="center">👤 Suvani Waghmore</h1>
-<h3 align="center">Technical Storyteller — Turning hidden patterns into narratives that move markets.</h3>
+<h3 align="center">Technical Storyteller Turning hidden patterns into narratives that move markets.</h3>
 
 <p align="center">
   <a href="mailto:suvaniwaghmare02@gmail.com"><img src="https://img.shields.io/badge/Contact-0A0A0A?style=for-the-badge&logo=gmail&logoColor=00E6A9" alt="Contact"/></a>
@@ -16,7 +16,7 @@
 Somewhere between raw data and human desire, I weave stories that convert.
 
 B.Tech CSE.  
-I don’t just analyze data — I make it speak.
+I don’t just analyze data I make it speak.
 
 Currently operating in silence: building unseen models and crafting brand narratives that work while no one’s watching.
 
@@ -24,7 +24,6 @@ Currently operating in silence: building unseen models and crafting brand narrat
 - 🌱 Learning: The darker arts of Python, pipelines & persuasion
 - ⚡ Known for: Creating a bug-hunting game that breaks developers across six languages… and then fixes them.
 
-Location: Phagwāra, Punjab — but the real work happens in the unseen layers.
 
 ---
 
