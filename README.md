@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="YOUR_GIF_URL_HERE" width="100%" alt="Mysterious Header GIF"/>
+  <img src="Pixel Art Font Projects.gif" width="100%" alt="Mysterious Header GIF"/>
 </div>
 <h1 align="center">👤 Suvani Waghmore</h1>
 <h3 align="center">Technical Storyteller — Turning hidden patterns into narratives that move markets.</h3>
