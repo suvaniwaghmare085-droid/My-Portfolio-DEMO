@@ -60,13 +60,14 @@ I'm a B.Tech CSE (Data Science & ML) student passionate about solving real-world
 
 📄 [Download CV](https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf)
 
----
-
-*✦ Open to internships, collaborations & mentorship opportunities.*
-
----
 
 <div align="center">
-  <img src="download.gif" width="100%" alt="FOOTER GIF"/>
+  <img src="download.gif" width="80%" alt="FOOTER GIF"/>
+</div>
+<br>
+
+<div align="center">
+ Open to internships, collaborations & mentorship opportunities.
 </div>
 
+---
