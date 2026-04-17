@@ -60,6 +60,7 @@ I'm a B.Tech CSE (Data Science & ML) student passionate about solving real-world
 
 📄 [Download CV](https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf)
 
+---
 
 <div align="center">
   <img src="download.gif" width="80%" alt="FOOTER GIF"/>
