@@ -63,3 +63,10 @@ I'm a B.Tech CSE (Data Science & ML) student passionate about solving real-world
 ---
 
 *✦ Open to internships, collaborations & mentorship opportunities.*
+
+---
+
+<div align="center">
+  <img src="download.gif" width="100%" alt="FOOTER GIF"/>
+</div>
+
