@@ -1,73 +1,64 @@
 <div align="center">
   <img src="Pixel Art Font Projects.gif" width="100%" alt="Mysterious Header GIF"/>
 </div>
-<h1 align="center">👤 Suvani Waghmare</h1>
-<h3 align="center">Technical Storyteller Turning hidden patterns into narratives that move markets.</h3>
 
-<p align="center">
-  <a href="mailto:suvaniwaghmare02@gmail.com"><img src="https://img.shields.io/badge/Contact-0A0A0A?style=for-the-badge&logo=gmail&logoColor=00E6A9" alt="Contact"/></a>
-  <a href="https://github.com/suvaniwaghmare085-droid"><img src="https://img.shields.io/badge/GitHub-0A0A0A?style=for-the-badge&logo=github&logoColor=00E6A9" alt="GitHub"/></a>
-</p>
+# 👋 Hi, I'm Suvani Waghmore
 
----
+**Technical Storyteller · Aspiring Data Scientist · Web Developer**
 
-### 🌀 About the Shadow
+> *"I turn raw data into brand narratives."*
 
-Somewhere between raw data and human desire, I weave stories that convert.
-
-B.Tech CSE.  
-I don’t just analyze data I make it speak.
-
-Currently operating in silence: building unseen models and crafting brand narratives that work while no one’s watching.
-
-- 🌑 Currently: Training models that see what others miss
-- 🌱 Learning: The darker arts of Python, pipelines & persuasion
-- ⚡ Known for: Creating a bug-hunting game that breaks developers across six languages… and then fixes them.
-
+I'm a B.Tech CSE (Data Science & ML) student passionate about solving real-world problems — from building ML models to crafting creative content that drives engagement.
 
 ---
 
-### 🛠️ Arsenal
+<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('your-bg-image.jpg'); background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+  <div>
+    <h1 style="font-size: 4.5rem; letter-spacing: -2px;">Live Experience</h1>
+    <p style="font-size: 1.5rem; margin: 20px 0; opacity: 0.9;">Immerse yourself in my world</p>
+    <a href="https://suvaniwaghmare085-droid.github.io/My-Portfolio-DEMO/" 
+       class="cta-button" 
+       style="background: #ff00ff; color: #000; padding: 16px 48px; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 50px; transition: all 0.3s;">
+      View the Portfolio →
+    </a>
+  </div>
+</section>
+---
 
-**Languages**  
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
 
-**Core**  
-Pandas • NumPy • Scikit-learn • Plotly • TensorFlow • Tailwind • MySQL
+## 🚀 Featured Projects
+
+| Project | Description | Tech Stack |
+|--------|-------------|------------|
+| [My-Portfolio-DEMO](https://github.com/suvaniwaghmare085-droid/My-Portfolio-DEMO) | This animated portfolio website — a modern showcase of my skills and journey | HTML, Tailwind, JavaScript |
+| [Manexa-sample-dashboard](https://github.com/suvaniwaghmare085-droid/Manexa-sample-dashboard) | Interactive sales & analytics dashboard *(Under Development)* | Python, Pandas, Plotly |
+| [Quiz-Game](https://github.com/suvaniwaghmare085-droid/Quiz-Game) | Story-driven interactive quiz blending logic & creativity | HTML, CSS, JavaScript |
+| [Movie-Dataset-Project](https://github.com/suvaniwaghmare085-droid/Movie-Dataset-Project) | Python data analysis on an IMDb movie dataset | Python, Pandas, Jupyter |
+| [Bug-Hunt-Game](https://github.com/suvaniwaghmare085-droid/Bug-Hunt-game) | Fun browser-based bug hunting game to practice interactivity | HTML, CSS, JavaScript |
 
 ---
 
-### 🕳️ VIEW LIVE PORTFOILIO
+## 🛠️ Tech Stack
 
-A living interface. Glass, motion, and controlled chaos.  
--**Live Experience** → [View the Portfolio](https://suvaniwaghmare085-droid.github.io/My-Portfolio-DEMO/) 
+**Languages:** Python · JavaScript · Java · C
 
+**Web:** HTML5 · CSS3 · Tailwind CSS · Responsive Design
 
-### 🏆 Echoes of Proof
+**Data & ML:** Pandas · Plotly · Jupyter Notebook · Machine Learning (Beginner)
 
-- Introduction to Python — 98.42% (Saylor Academy)
-- Professional Writing II — 100% (Saylor Academy)
-- Advanced Power BI • Cyber Security • Leadership
+**Other:** Content Writing · Brand Storytelling · Social Media Management
 
 ---
 
-### 🔥 The Path Ahead
+## 📫 Connect With Me
 
-Mastering the unseen.  
-Building what others can’t explain.  
-Open to quiet collaborations that matter.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/suvani-waghmare)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/suvaniwaghmare085-droid)
+[![X](https://img.shields.io/badge/X-000000?style=flat&logo=x&logoColor=white)](https://x.com/SuvaniW61316)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:suvaniwaghmare02@gmail.com)
+
+📄 [Download CV](https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf)
 
 ---
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=suvaniwaghmare085-droid&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0A0A0A&title_color=00E6A9&text_color=FFFFFF&icon_color=00E6A9" height="170"/>
-</div>
-
-<br>
-
-<div align="center">
-  Some stories are better left unfinished.<br>
-  © 2026 Suvani Waghmare •
-</div>
+*✦ Open to internships, collaborations & mentorship opportunities.*
