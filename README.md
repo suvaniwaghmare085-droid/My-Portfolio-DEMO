@@ -12,6 +12,7 @@ I'm a B.Tech CSE (Data Science & ML) student passionate about solving real-world
 
 ---
 
+
 <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('your-bg-image.jpg'); background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
   <div>
     <h1 style="font-size: 4.5rem; letter-spacing: -2px;">Live Experience</h1>
