@@ -35,7 +35,7 @@ I'm a B.Tech CSE (Data Science & ML) student passionate about solving real-world
     <a href="https://my-portfolio-demo-eta.vercel.app/" 
        class="cta-button" 
        style="background: #ff00ff; color: #000; padding: 16px 48px; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 50px; transition: all 0.3s;">
-      View the Portfolio →
+      View the Portfolio on Versal →
     </a>
   </div>
 </section>
