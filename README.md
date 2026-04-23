@@ -28,6 +28,20 @@ I'm a B.Tech CSE (Data Science & ML) student passionate about solving real-world
 
 ---
 
+<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('your-bg-image.jpg'); background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+  <div>
+    <h1 style="font-size: 4.5rem; letter-spacing: -2px;">Live Experience</h1>
+    <p style="font-size: 1.5rem; margin: 20px 0; opacity: 0.9;">Immerse yourself in my world</p>
+    <a href="https://my-portfolio-demo-eta.vercel.app/" 
+       class="cta-button" 
+       style="background: #ff00ff; color: #000; padding: 16px 48px; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 50px; transition: all 0.3s;">
+      View the Portfolio →
+    </a>
+  </div>
+</section>
+
+---
+
 
 ## 🚀 Featured Projects
 
