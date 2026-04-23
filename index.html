@@ -107,6 +107,7 @@
             display: grid; grid-template-columns: 5fr 7fr;
             gap: 64px; align-items: center; position: relative; z-index: 10;
         }
+
         @media (max-width: 768px) {
             .hero-layout { grid-template-columns: 1fr; }
             .hero-profile { order: -1; display: flex; justify-content: center; }
@@ -332,7 +333,31 @@
         .skill-level { color: var(--cyan); font-size: 0.75rem; font-family: 'Syne', system-ui, sans-serif; font-weight: 700; }
         .skill-pct { text-align: right; font-size: 0.75rem; color: var(--cyan); margin-top: 6px; font-family: 'Syne', system-ui, sans-serif; font-weight: 700; }
         .subhead { font-size: 0.75rem; color: rgba(240,240,240,0.3); font-family: 'Syne', system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
-        /* GOALS */
+        /* ── PER-TAB ACCENT COLORS ───────────────────────────────────────── */
+        /* Each tab gets its own --tab-accent colour applied via JS on switch */
+        .tab-panel { --tab-accent: var(--cyan); }
+
+        /* Skill pills dot per tab */
+        .tab-panel .dot { background: var(--tab-accent); }
+        .tab-panel .skill-pct { color: var(--tab-accent); }
+        .tab-panel .skill-level { color: var(--tab-accent); }
+        .tab-panel .prof-bar-fill { background: linear-gradient(90deg, var(--tab-accent), color-mix(in srgb, var(--tab-accent) 50%, white)); }
+        .tab-panel .subhead { color: color-mix(in srgb, var(--tab-accent) 60%, transparent); }
+
+        /* Tab-specific heading colours */
+        .tab-panel[data-panel="languages"] { --tab-accent: #3b82f6; }   /* blue */
+        .tab-panel[data-panel="webdev"]    { --tab-accent: #f97316; }   /* orange */
+        .tab-panel[data-panel="dataml"]    { --tab-accent: #10b981; }   /* emerald */
+        .tab-panel[data-panel="aitools"]   { --tab-accent: #a855f7; }   /* violet */
+        .tab-panel[data-panel="writing"]   { --tab-accent: #ec4899; }   /* pink */
+        .tab-panel[data-panel="marketing"] { --tab-accent: #f59e0b; }   /* amber */
+        .tab-panel[data-panel="professional"] { --tab-accent: #06b6d4; } /* cyan */
+
+        /* Skill card hover border matches tab accent */
+        .tab-panel .skill-card:hover { border-color: color-mix(in srgb, var(--tab-accent) 40%, transparent); }
+
+        /* Tab indicator: coloured per active tab (set via JS) */
+        #tabIndicator { transition: left 0.35s cubic-bezier(0.4,0,0.2,1), top 0.35s cubic-bezier(0.4,0,0.2,1), width 0.35s cubic-bezier(0.4,0,0.2,1), height 0.35s cubic-bezier(0.4,0,0.2,1), background 0.35s ease; }
         .goals-chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
         .goal-chip {
             padding: 10px 20px; border-radius: 9999px;
@@ -443,6 +468,9 @@
 
         /* Tab indicator in light mode */
         body.light .tab-indicator { box-shadow: 0 0 20px rgba(109,40,217,0.4); }
+        /* Theme toggle visibility in light mode */
+        body.light #themeToggle { color: rgba(80,20,160,0.9) !important; }
+        body.light #themeToggle:hover { color: #6d28d9 !important; }
 
         /* Hero gradient in light mode */
         body.light .hero-gradient {
@@ -475,7 +503,7 @@
 <!-- NAV -->
 <nav>
     <div class="nav-inner">
-        <div class="nav-logo syne">SWL<span class="text-cyan">.</span></div>
+        <div class="nav-logo syne">Suvani<span class="text-cyan">.</span></div>
         <div class="nav-links">
             <a href="#about" class="nav-link">About</a>
             <a href="#projects" class="nav-link">Projects</a>
@@ -484,7 +512,7 @@
             <a href="#contact" class="nav-link">Contact</a>
         </div>
         <div class="nav-right">
-            <button id="themeToggle" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:rgba(240,240,240,0.7);background:none;border:none;cursor:pointer;transition:color 0.3s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='rgba(240,240,240,0.7)'">
+            <button id="themeToggle" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:rgba(240,240,240,0.7);background:none;border:none;cursor:pointer;transition:color 0.3s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color=document.body.classList.contains('light')?'rgba(80,20,160,0.9)':'rgba(240,240,240,0.7)'">
                 <i class="fa-solid fa-sun"></i>
             </button>
             <a href="https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/MY_CV1.pdf" target="_blank" class="btn-outline btn-sm">
@@ -529,7 +557,7 @@
                         Let's Work Together <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
                     </a>
                     <a href="#projects" class="btn-outline btn-md">Explore My Work</a>
-                    <a href="https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/Suvani_Waghmore_CV.pdf" target="_blank"
+                    <a href="https://raw.githubusercontent.com/suvaniwaghmare085-droid/My-Portfolio-DEMO/main/MY_CV1.pdf" target="_blank"
                        class="btn-outline btn-md">
                         <i class="fa-solid fa-download" style="font-size:0.75rem;"></i> Download CV
                     </a>
@@ -968,7 +996,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-inner">
-        <div class="syne" style="font-weight:800;font-size:1.25rem;letter-spacing:-0.05em;margin-bottom:16px;">SWL<span class="text-cyan">.</span></div>
+        <div class="syne" style="font-weight:800;font-size:1.25rem;letter-spacing:-0.05em;margin-bottom:16px;">Suvani<span class="text-cyan">.</span></div>
         <p style="color:rgba(255,255,255,0.25);font-size:0.875rem;">© 2025 Suvani Waghmore. Designed with data & creativity.</p>
     </div>
 </footer>
@@ -1182,6 +1210,15 @@ function moveIndicator(btn) {
     indicator.style.width = btnRect.width + 'px';
     indicator.style.height = btnRect.height + 'px';
 }
+const TAB_COLORS = {
+    languages:    '#3b82f6',
+    webdev:       '#f97316',
+    dataml:       '#10b981',
+    aitools:      '#a855f7',
+    writing:      '#ec4899',
+    marketing:    '#f59e0b',
+    professional: '#06b6d4',
+};
 function switchTab(targetTab) {
     tabBtns.forEach(b => b.classList.remove('active'));
     tabPanels.forEach(p => p.classList.remove('active'));
@@ -1189,10 +1226,23 @@ function switchTab(targetTab) {
     const activePanel = document.querySelector(`.tab-panel[data-panel="${targetTab}"]`);
     if (activeBtn) { activeBtn.classList.add('active'); moveIndicator(activeBtn); }
     if (activePanel) { activePanel.classList.add('active'); }
+    // Apply accent colour to indicator
+    const accent = TAB_COLORS[targetTab] || 'var(--cyan)';
+    indicator.style.background = accent;
+    indicator.style.boxShadow = `0 0 20px ${accent}88`;
     requestAnimationFrame(() => animateBars());
 }
 tabBtns.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
-window.addEventListener('load', () => { const firstActive = document.querySelector('.tab-btn.active'); if (firstActive) moveIndicator(firstActive); });
+window.addEventListener('load', () => { 
+    const firstActive = document.querySelector('.tab-btn.active'); 
+    if (firstActive) { 
+        moveIndicator(firstActive); 
+        const tab = firstActive.dataset.tab;
+        const accent = TAB_COLORS[tab] || 'var(--cyan)';
+        indicator.style.background = accent;
+        indicator.style.boxShadow = `0 0 20px ${accent}88`;
+    } 
+});
 window.addEventListener('resize', () => { const active = document.querySelector('.tab-btn.active'); if (active) moveIndicator(active); });
 
 // PROFICIENCY BARS
