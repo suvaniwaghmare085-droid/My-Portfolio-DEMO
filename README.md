@@ -2,7 +2,6 @@
   <img src="Pixel Art Font Projects.gif" width="100%" alt="Mysterious Header GIF"/>
 </div>
 
-
 # 👋 Hi, I'm Suvani Waghmore
 
 **Technical Storyteller · Aspiring Data Scientist · Web Developer**
