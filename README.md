@@ -7,7 +7,8 @@
 
 <!-- Typing SVG -->
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=FF69B4&center=true&width=900&lines=+Aspiring+Data+Scientist;+Writer;+Data+Science+Enthusiast;+Python;+DSA;+Machine+Learning;+Learner;+Tech+%26+Creativity" />
+  a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=FF00FF&center=true&vCenter=true&multiline=true&repeat=true&width=700&height=80&lines=Hi+There%2C+I'm+Suvani+Waghmare=+Aspiring+Data+Scientist;+Writer;+Data+Science+Enthusiast;+Python;+DSA;+Machine+Learning;+Learner;+Tech+%26+Creativity" />
 </p>
 
 <br/><br/>
