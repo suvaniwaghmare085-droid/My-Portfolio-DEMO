@@ -107,17 +107,6 @@ class Suvani:
 
 ## 📈 GitHub Stats
 
-<div align="center">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=suvaniwaghmare085-droid&show_icons=true&theme=radical&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=suvaniwaghmare085-droid&layout=compact&langs_count=8&theme=radical&hide_border=true&bg_color=0d1117"/>
-
-<br/>
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=suvaniwaghmare085-droid&theme=radical&hide_border=true&background=0d1117" alt="GitHub Streak Stats"/>
-
-<br/><br/>
-
 <!-- GitHub activity graph -->
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=suvaniwaghmare085-droid&bg_color=0d1117&color=ff00ff&line=ff00ff&point=ffffff&area=true&hide_border=true" alt="Activity Graph" width="100%"/>
 
