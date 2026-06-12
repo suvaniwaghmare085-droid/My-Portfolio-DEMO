@@ -1,4 +1,5 @@
 <div align="center">
+
  
 <!-- Animated header banner -->
 <img src="Pixel Art Font Projects.gif" width="100%" alt="Suvani Waghmare — Portfolio Banner"/>
