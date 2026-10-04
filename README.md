@@ -155,7 +155,7 @@ I believe the intersection of **technical skill** and **creative communication**
 
 | Platform | Handle |
 |:--------:|:------:|
-| 💼 LinkedIn | [suvani-waghmore](https://www.linkedin.com/in/suvani-waghmore) |
+| 💼 LinkedIn | [suvani-waghmore](https://www.linkedin.com/in/suvani-waghmare) |
 | 🐙 GitHub | [suvaniwaghmare085-droid](https://github.com/suvaniwaghmare085-droid) |
 | 🐦 X (Twitter) | [@SuvaniW61316](https://x.com/SuvaniW61316) |
 | 📧 Email | [suvaniwaghmore02@gmail.com](mailto:suvaniwaghmore02@gmail.com) |
